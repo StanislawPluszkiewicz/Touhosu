@@ -9,61 +9,88 @@ namespace Game
 	[System.Serializable]
 	public class Boundary
 	{
-		public float xMin, xMax, zMin, zMax;
+		public float xMin, xMax, yMin, yMax;
 	}
-
 	public class PlayerController : MonoBehaviour
 	{
 		[Title("Movement")]
+		public float m_Height;
 		public float m_Speed;
 		public float m_Tilt;
+		[Title("Movement Restriction")]
 		public Boundary m_Boundary;
+		[SerializeField] private bool m_ShowBoundaryGizmo;
+
 
 		[Title("Shooting")]
-		public GameObject m_ProjectilesParent;
-		public GameObject m_ShotPrefab;
-		public Transform m_ShotSpawn;
-		public float m_FireRate;
-		float m_NextFire;
+		Weapon[] m_Weapons;
+
+
 
 		Rigidbody rb;
+		CameraMovement cm;
 
 		void Awake()
 		{
 			rb = GetComponent<Rigidbody>();
-			m_ProjectilesParent = GameObject.Find("Projectiles");
-			if (m_ProjectilesParent == null)
-			{
-				m_ProjectilesParent = new GameObject("Projectiles");
-			}
+			m_Weapons = transform.GetComponentsInChildren<Weapon>();
+		}
+
+		void Start()
+		{
+			cm = FindObjectOfType<CameraMovement>();	
 		}
 
 		void Update()
 		{
-			if (Input.GetButton("Fire1") && Time.time > m_NextFire)
+			if (Input.GetButton("Fire1") && m_Weapons != null)
 			{
-				m_NextFire = Time.time + m_FireRate;
-				Instantiate(m_ShotPrefab, m_ShotSpawn.position, m_ShotSpawn.rotation, m_ProjectilesParent.transform);
+				foreach (Weapon weapon in m_Weapons)
+				{
+					weapon.Shoot();
+				}
 			}
 		}
 
 		void FixedUpdate()
 		{
+			Move();
+		}
+
+		private void Move()
+		{
 			float moveHorizontal = Input.GetAxis("Horizontal");
 			float moveVertical = Input.GetAxis("Vertical");
 
-			Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-			rb.velocity = movement * m_Speed * Time.deltaTime;
+			Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0);
+			rb.velocity = movement * m_Speed;
 
-			rb.position = new Vector3
+			transform.localPosition = new Vector3
 			(
-				Mathf.Clamp(rb.position.x, m_Boundary.xMin, m_Boundary.xMax),
-				0.0f,
-				Mathf.Clamp(rb.position.z, m_Boundary.zMin, m_Boundary.zMax)
+				Mathf.Clamp(transform.localPosition.x, m_Boundary.xMin, m_Boundary.xMax),
+				Mathf.Clamp(transform.localPosition.y, m_Boundary.yMin, m_Boundary.yMax),
+				m_Height
 			);
 
-			rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x * -m_Tilt);
+			rb.rotation = Quaternion.Euler(0.0f, Mathf.Lerp(rb.rotation.y, moveHorizontal * -m_Tilt, Time.deltaTime), 0.0f);
 		}
 
+		private void OnDrawGizmos()
+		{
+			if (cm != null && m_ShowBoundaryGizmo)
+			{
+				Gizmos.color = Color.yellow;
+				Vector3 upLeft		= cm.transform.position + (Vector3.right * m_Boundary.xMin) + (Vector3.up * m_Boundary.yMax);
+				Vector3 upRight		= cm.transform.position + (Vector3.right * m_Boundary.xMax) + (Vector3.up * m_Boundary.yMax);
+				Vector3 downLeft	= cm.transform.position + (Vector3.right * m_Boundary.xMin) + (Vector3.up * m_Boundary.yMin);
+				Vector3 downRight	= cm.transform.position + (Vector3.right * m_Boundary.xMax) + (Vector3.up * m_Boundary.yMin);
+
+				Gizmos.DrawLine(upLeft, upRight);
+				Gizmos.DrawLine(upRight, downRight);
+				Gizmos.DrawLine(downRight, downLeft);
+				Gizmos.DrawLine(downLeft, upLeft);
+			}
+		}
 	}
+
 }
