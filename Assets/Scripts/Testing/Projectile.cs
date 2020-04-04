@@ -8,16 +8,19 @@ public class Projectile : MonoBehaviour
 {
 	[SerializeField] float m_AliveTime = 10f;
 	[SerializeField] float m_Speed = 10f;
-	Rigidbody rb;
 
 	public void Start()
 	{
 		Destroy(gameObject, m_AliveTime);
-		rb = GetComponent<Rigidbody>();
+	}
+
+	float GetSpeed()
+	{
+		return (FindObjectOfType<CameraMovement>().cameraSpeed + m_Speed) * Time.deltaTime;
 	}
 
 	public void Update()
 	{
-		rb.velocity = transform.up * m_Speed * Time.deltaTime;
+		transform.Translate(transform.up * GetSpeed());
 	}
 }
