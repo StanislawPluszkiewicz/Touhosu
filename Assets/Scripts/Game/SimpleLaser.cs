@@ -9,6 +9,6 @@ public class SimpleLaser : SimpleBullet {
     public SimpleLaser() {
     }
 
-    public boolean m_StayChildOfWeapon;
+    public bool m_StayChildOfWeapon;
 
 }

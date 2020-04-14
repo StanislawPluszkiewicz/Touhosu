@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 namespace Components{
-    public class InputShootComponent : ShootComponent {
+    public class InputShootComponent /* : ShootComponent */ {
 
         public InputShootComponent() {
         }

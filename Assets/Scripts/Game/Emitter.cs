@@ -9,6 +9,6 @@ public class Emitter {
     public Emitter() {
     }
 
-    public void m_VoirPatternDeSpaceInvader;
+    //public m_VoirPatternDeSpaceInvader;
 
 }

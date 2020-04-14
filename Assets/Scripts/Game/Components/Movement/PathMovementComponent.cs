@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Entities;
 using Unity.Mathematics;
-
+using Game;
 
 namespace Components
 {
@@ -13,6 +13,8 @@ namespace Components
 	{
 		public float3 m_StartPoint;
 
-        public Waypoint[] m_Waypoints;
+
+        
+        //public Waypoint[] m_Waypoints;
     }
 }

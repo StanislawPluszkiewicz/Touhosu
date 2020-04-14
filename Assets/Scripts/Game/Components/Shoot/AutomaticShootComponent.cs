@@ -5,10 +5,7 @@ using System.Linq;
 using System.Text;
 
 namespace Components{
-    public class AutomaticShootComponent : ShootComponent {
-
-        public AutomaticShootComponent() {
-        }
+    public struct AutomaticShootComponent /*: ShootComponent*/ {
 
         public float m_Interval;
 

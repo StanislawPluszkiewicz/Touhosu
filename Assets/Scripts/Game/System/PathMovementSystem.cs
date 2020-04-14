@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Unity.Entities;
 
-public class PathMovementSystem : System {
+public class PathMovementSystem : ComponentSystem {
 
-    public PathMovementSystem() {
+    protected override void OnUpdate()
+    {
     }
-
 }

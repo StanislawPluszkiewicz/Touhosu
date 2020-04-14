@@ -6,14 +6,12 @@ using UnityEngine;
 using Unity.Entities;
 
 namespace Components{
-    public class HealthComponent : IComponentData {
+    public struct HealthComponent : IComponentData {
 
-        public HealthComponent() {
-        }
 
         public float m_Amount;
 
-        public delegate m_OnDeath;
+        //public delegate m_OnDeath;
 
     }
 }

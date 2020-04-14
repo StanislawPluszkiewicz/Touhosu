@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Unity.Entities;
 
 namespace Components{
     public class ScoreComponent : IComponentData {
@@ -10,7 +11,7 @@ namespace Components{
         public ScoreComponent() {
         }
 
-        public long int m_Value;
+        public long m_Value;
 
     }
 }

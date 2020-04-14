@@ -3,10 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Unity.Entities;
 
-public class AutomaticShootSystem : System {
+public class AutomaticShootSystem : ComponentSystem {
 
-    public AutomaticShootSystem() {
+    protected override void OnUpdate()
+    {
+
     }
 
 }

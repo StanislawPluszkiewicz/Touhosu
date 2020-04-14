@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Unity.Entities;
 
-public class InputShootSystem : System {
+public class InputShootSystem : ComponentSystem {
 
-    public InputShootSystem() {
+    protected override void OnUpdate()
+    {
     }
-
 }

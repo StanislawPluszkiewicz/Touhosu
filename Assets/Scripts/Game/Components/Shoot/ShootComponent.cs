@@ -3,14 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Unity.Entities;
 
 namespace Components{
-    public class ShootComponent : IComponentData {
+    public struct ShootComponent : IComponentData {
 
-        public ShootComponent() {
-        }
-
-        public boolean m_DoShoot;
+        public bool m_DoShoot;
 
     }
 }

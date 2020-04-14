@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 /// <summary>
 /// #Bullets
@@ -17,7 +18,7 @@ public class SimpleBullet : BulletComposite {
     public SimpleBullet() {
     }
 
-    public VectorMovementComponent m_VectorialMovementComponent;
+    public VectorialMovementComponent m_VectorialMovementComponent;
 
     public Mesh m_Mesh;
 

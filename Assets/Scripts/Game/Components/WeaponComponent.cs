@@ -3,20 +3,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Unity.Entities;
 
 namespace Components{
-    public class WeaponComponent : IComponentData {
+    public struct WeaponComponent : IComponentData {
 
-        public WeaponComponent() {
-        }
 
         public float m_FireRate;
 
         private float m_LastFire;
 
-        public Bullet m_Bullet;
 
-        public Emitter[] m_Emitters;
+        /*public Bullet m_Bullet;
+
+        public Emitter[] m_Emitters;*/
 
     }
 }

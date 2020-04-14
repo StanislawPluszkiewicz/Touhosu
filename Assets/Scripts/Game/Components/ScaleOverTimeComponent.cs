@@ -3,11 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Unity.Entities;
+using Unity.Mathematics;
+using UnityEngine;
 
-public class ScaleOverTimeComponent : IComponentData {
+public struct ScaleOverTimeComponent : IComponentData {
 
-    public ScaleOverTimeComponent() {
-    }
 
     public float3 m_NewScale;
 
@@ -15,6 +16,6 @@ public class ScaleOverTimeComponent : IComponentData {
 
     public float m_Time;
 
-    public AnimationCurve m_SpeedOverTime;
+    //public AnimationCurve m_SpeedOverTime;
 
 }
