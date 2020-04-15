@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Unity.Entities;
+using Unity.Transforms;
 using UnityEngine;
 
 public class InputMoveSystem : ComponentSystem {
@@ -12,20 +13,25 @@ public class InputMoveSystem : ComponentSystem {
 
     protected override void OnUpdate()
     {
-        if(Input.GetAxis("Vertical") != 0f)
+        Entities.ForEach((ref InputMovementComponent movementComponent) =>
         {
-            float verticalMovement = Input.GetAxis("Vertical");
-            Entities.ForEach((ref InputMovementComponent movementComponent) =>
+            movementComponent.m_SlowDown = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        });
+
+        if (Input.GetAxis("Vertical") != 0f)
+        {
+            float verticalMovement = Input.GetAxis("Vertical") * Time.DeltaTime;
+            Entities.ForEach((ref Translation translation, ref InputMovementComponent movementComponent) =>
             {
-                movementComponent.m_Vertical += verticalMovement * Time.DeltaTime;
+                translation.Value.y += movementComponent.m_SlowDown ? verticalMovement * movementComponent.m_Speed / 2 : verticalMovement * movementComponent.m_Speed;
             });
         }
         if (Input.GetAxis("Horizontal") != 0f)
         {
-            float horizontalMovement = Input.GetAxis("Horizontal");
-            Entities.ForEach((ref InputMovementComponent movementComponent) =>
+            float horizontalMovement = Input.GetAxis("Horizontal") * Time.DeltaTime;
+            Entities.ForEach((ref Translation translation, ref InputMovementComponent movementComponent) =>
             {
-                movementComponent.m_Horizontal += horizontalMovement * Time.DeltaTime;
+                translation.Value.x += movementComponent.m_SlowDown ? horizontalMovement * movementComponent.m_Speed / 2 : horizontalMovement * movementComponent.m_Speed;
             });
         }
     }

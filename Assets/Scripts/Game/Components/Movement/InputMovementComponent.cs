@@ -11,9 +11,9 @@ namespace Components
 {
     public struct InputMovementComponent : IComponentData
 	{
-        public float m_Vertical;
+        /*public float m_Vertical;
 
-        public float m_Horizontal;
+        public float m_Horizontal;*/
 
         public bool m_SlowDown;
 
