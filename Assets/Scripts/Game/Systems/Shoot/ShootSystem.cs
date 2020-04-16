@@ -15,8 +15,13 @@ namespace Game.Systems
 	{
 		protected override void OnUpdate()
 		{
-
-
+			Entities.ForEach((ref ShootComponent c) =>
+			{
+				if (c.m_DoShoot)
+				{
+					c.m_DoShoot = false;
+				}
+			});
 		}
 	}
 }

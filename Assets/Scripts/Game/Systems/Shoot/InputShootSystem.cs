@@ -6,21 +6,21 @@ using System.Text;
 using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
+using Unity.Burst;
 
 namespace Game.Systems
 {
 	public class InputShootSystem : ComponentSystem
 	{
-
 		protected override void OnUpdate()
 		{
-			Entities.ForEach((ref InputShootComponent inputComponent, ref ShootComponent shootComponent) =>
+			if (Input.GetKey(Game.KeyBindings.Shoot))
 			{
-				if (Input.GetKeyDown(Game.KeyBindings.Shoot))
+				Entities.ForEach((ref InputShootComponent inputComponent, ref ShootComponent shootComponent) =>
 				{
 					shootComponent.m_DoShoot = true;
-				}
-			});
+				});
+			}
 		}
 	}
 }
