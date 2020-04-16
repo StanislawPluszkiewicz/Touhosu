@@ -7,8 +7,9 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Game;
 
-namespace Components
+namespace Game.Components
 {
+    [GenerateAuthoringComponent]
     public struct PathMovementComponent : IComponentData
 	{
 		public float3 m_StartPoint;

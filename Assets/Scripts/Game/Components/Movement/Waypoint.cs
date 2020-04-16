@@ -7,9 +7,10 @@ using Unity.Entities;
 using Unity.Mathematics;
 
 
-namespace Game
+namespace Game.Components
 {
-	public struct Waypoint
+	[GenerateAuthoringComponent]
+	public struct Waypoint : IComponentData
 	{
 		public EInterpolation m_InterpolationType;
 		public float m_Acceleration;
@@ -27,7 +28,7 @@ namespace Game
 		}
 	}
 
-	public class WayPointBuilder
+	public struct WayPointBuilder : IComponentData
 	{
 		public EInterpolation m_InterpolationType;
 		float m_Acceleration;
@@ -35,10 +36,6 @@ namespace Game
 		bool m_LookForward;
 		float3 m_NextPoint;
 
-		public WayPointBuilder()
-		{
-
-		}
 
 		void WithType(EInterpolation type)
 		{

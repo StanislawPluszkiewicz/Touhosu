@@ -5,7 +5,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Entities;
 
-namespace Components{
+namespace Game.Components
+{
+
+    [GenerateAuthoringComponent]
     public struct HealthComponent : IComponentData {
 
 

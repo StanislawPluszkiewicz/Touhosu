@@ -5,7 +5,10 @@ using System.Linq;
 using System.Text;
 using Unity.Entities;
 
-namespace Components{
+namespace Game.Components
+{
+
+    [GenerateAuthoringComponent]
     public class ScoreComponent : IComponentData {
 
         public ScoreComponent() {

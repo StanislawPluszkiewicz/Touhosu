@@ -1,10 +1,10 @@
-﻿using Components;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 using Unity.Rendering;
 using Unity.Transforms;
+using Game.Components;
 
 public class ArrcTest : MonoBehaviour
 {

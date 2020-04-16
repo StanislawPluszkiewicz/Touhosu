@@ -6,14 +6,18 @@ using UnityEngine;
 using Unity.Entities;
 using Unity.Mathematics;
 
-
-public class VectorialMovementComponent : IComponentData
+namespace Game.Components
 {
 
-    public float m_Speed;
+    [GenerateAuthoringComponent]
+    public class VectorialMovementComponent : IComponentData
+    {
 
-    public float3 m_Acceleration;
+        public float m_Speed;
 
-    public float3 m_Direction;
+        public float3 m_Acceleration;
 
+        public float3 m_Direction;
+
+    }
 }

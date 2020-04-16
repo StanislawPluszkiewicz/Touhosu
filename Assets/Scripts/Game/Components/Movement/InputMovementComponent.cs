@@ -7,8 +7,9 @@ using Unity.Entities;
 using Unity.Mathematics;
 
 
-namespace Components
+namespace Game.Components
 {
+    [GenerateAuthoringComponent]
     public struct InputMovementComponent : IComponentData
 	{
         /*public float m_Vertical;

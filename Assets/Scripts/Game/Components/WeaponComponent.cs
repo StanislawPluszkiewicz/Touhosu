@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using Unity.Entities;
 
-namespace Components{
+namespace Components
+{
+    [GenerateAuthoringComponent]
     public struct WeaponComponent : IComponentData {
 
 

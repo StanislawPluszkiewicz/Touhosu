@@ -3,10 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Unity.Entities;
 
-public class InterpolationLinearComponent /*: InterpolationComponent*/ {
+namespace Game.Components
+{
+    [GenerateAuthoringComponent]
+    public struct InterpolationLinearComponent : IComponentData
+    {
 
-    public InterpolationLinearComponent() {
+
     }
-
 }

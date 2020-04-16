@@ -5,8 +5,13 @@ using System.Linq;
 using System.Text;
 using Unity.Entities;
 
-public struct ParticuleComponent : IComponentData {
+namespace Game.Components
+{
+    [GenerateAuthoringComponent]
+    public struct ParticuleComponent : IComponentData
+    {
 
-    public float m_LifeTime;
+        public float m_LifeTime;
 
+    }
 }

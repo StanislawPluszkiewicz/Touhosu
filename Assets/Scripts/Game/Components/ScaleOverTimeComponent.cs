@@ -7,15 +7,20 @@ using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
 
-public struct ScaleOverTimeComponent : IComponentData {
+namespace Game.Components
+{
+    [GenerateAuthoringComponent]
+    public struct ScaleOverTimeComponent : IComponentData
+    {
 
 
-    public float3 m_NewScale;
+        public float3 m_NewScale;
 
-    public float m_StartTime;
+        public float m_StartTime;
 
-    public float m_Time;
+        public float m_Time;
 
-    //public AnimationCurve m_SpeedOverTime;
+        //public AnimationCurve m_SpeedOverTime;
 
+    }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 using Unity.Entities;
 using Unity.Mathematics;
 
-namespace Game
+namespace Game.Components
 {
 	public enum EInterpolation
 	{
@@ -14,7 +14,8 @@ namespace Game
 		BEZIER
 	}
 
-	public struct InterpolationComponent
+	[GenerateAuthoringComponent]
+	public struct InterpolationComponent : IComponentData
 	{
 	}
 }
