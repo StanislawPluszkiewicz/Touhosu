@@ -7,37 +7,30 @@ using System.Text;
 using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
+using Unity.Burst;
 
 
 namespace Game.Systems
 {
-	public class InputMoveSystem : ComponentSystem
-	{
+    [BurstCompile]
+    public class InputMoveSystem : ComponentSystem
+    {
+        protected override void OnUpdate()
+        {
+            float verticalMovement = Input.GetAxisRaw("Vertical");
+            float horizontalMovement = Input.GetAxisRaw("Horizontal");
+            bool isSlowing = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 
-		protected override void OnUpdate()
-		{
-			Entities.ForEach((ref InputMovementComponent movementComponent) =>
-			{
-				movementComponent.m_SlowDown = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-			});
+            Entities.ForEach((ref MovementComponent movementComponent, ref InputMovementComponent inputMovementComponent) =>
+            {
+                movementComponent.m_SlowDown = isSlowing;
+                movementComponent.m_Vertical = verticalMovement;
+                movementComponent.m_Horizontal = horizontalMovement;
 
-			if (Input.GetAxis("Vertical") != 0f)
-			{
-				float verticalMovement = Input.GetAxis("Vertical") * Time.DeltaTime;
-				Entities.ForEach((ref Translation translation, ref InputMovementComponent movementComponent) =>
-				{
-					translation.Value.y += movementComponent.m_SlowDown ? verticalMovement * movementComponent.m_Speed / 2 : verticalMovement * movementComponent.m_Speed;
-				});
-			}
-			if (Input.GetAxis("Horizontal") != 0f)
-			{
-				float horizontalMovement = Input.GetAxis("Horizontal") * Time.DeltaTime;
-				Entities.ForEach((ref Translation translation, ref InputMovementComponent movementComponent) =>
-				{
-					translation.Value.x += movementComponent.m_SlowDown ? horizontalMovement * movementComponent.m_Speed / 2 : horizontalMovement * movementComponent.m_Speed;
-				});
-			}
-		}
+            });
 
-	}
+        }
+
+    }
+
 }

@@ -213,9 +213,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 502309287}
-  - component: {fileID: 502309286}
   - component: {fileID: 502309291}
   - component: {fileID: 502309290}
+  - component: {fileID: 502309286}
   - component: {fileID: 502309289}
   - component: {fileID: 502309288}
   m_Layer: 0
@@ -232,13 +232,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502309285}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6835dfd79bf34924caf5646d770b1d2d, type: 3}
+  m_Script: {fileID: 11500000, guid: d042c7446ef3b7b4b8777a37ce02c4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100000, guid: 4408fd359724a4d43a7e1f58b28b8867, type: 2}
+  m_Vertical: 0
+  m_Horizontal: 0
+  m_SlowDown: 0
+  m_Speed: 5
 --- !u!4 &502309287
 Transform:
   m_ObjectHideFlags: 0
@@ -312,8 +314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5df45aec370f74ebed26644bd8a7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SlowDown: 0
-  m_Speed: 5
 --- !u!114 &502309291
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,12 +12,5 @@ namespace Game.Components
     [GenerateAuthoringComponent]
     public struct InputMovementComponent : IComponentData
 	{
-        /*public float m_Vertical;
-
-        public float m_Horizontal;*/
-
-        public bool m_SlowDown;
-
-        public float m_Speed;
     }
 }
