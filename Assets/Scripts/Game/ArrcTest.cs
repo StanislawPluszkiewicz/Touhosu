@@ -16,9 +16,10 @@ public class ArrcTest : MonoBehaviour
     {
         EntityManager eM = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-        Entity e = eM.CreateEntity(typeof(InputMovementComponent), typeof(RenderMesh), typeof(LocalToWorld), typeof(Translation), typeof(RenderBounds));
+        Entity e = eM.CreateEntity(typeof(InputMovementComponent), typeof(RenderMesh), typeof(LocalToWorld), typeof(Translation), typeof(RenderBounds), typeof(LifespanComponent));
 
         eM.SetComponentData(e, new InputMovementComponent { m_Speed = 5 });
+        eM.SetComponentData(e, new LifespanComponent { m_lifespan = 5f });
         eM.SetSharedComponentData(e, new RenderMesh { mesh = mesh, material = material });
     }
 
