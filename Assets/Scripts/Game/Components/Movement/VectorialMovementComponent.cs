@@ -8,15 +8,10 @@ using Unity.Mathematics;
 
 namespace Game.Components
 {
-
-    [GenerateAuthoringComponent]
     public class VectorialMovementComponent : IComponentData
     {
-
         public float m_Speed;
-
-        public float3 m_Acceleration;
-
+        public float m_Acceleration;
         public float3 m_Direction;
 
     }

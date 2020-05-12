@@ -11,15 +11,20 @@ using UnityEngine;
 
 namespace Game.Systems
 {
+	[UpdateAfter(typeof(InputShootSystem))]
+	[UpdateAfter(typeof(AutomaticShootSystem))]
 	public class ShootSystem : ComponentSystem
 	{
 		protected override void OnUpdate()
 		{
-			Entities.ForEach((ref ShootComponent c) =>
+			float deltaTime = Time.DeltaTime;
+			double currentTime = Time.ElapsedTime;
+			Entities.ForEach((ref ShootComponent c, ref Translation translation) =>
 			{
 				if (c.m_DoShoot)
 				{
-					c.m_DoShoot = false;
+					Debug.Log("Shooting");
+					// GameObject.Instantiate(BulletManager.Get(c.m_BulletId), translation.Value, Quaternion.identity, null);
 				}
 			});
 		}

@@ -6,15 +6,12 @@ using UnityEngine;
 
 namespace Game
 {
-	public class PlayerController : Actor
+	public class Ennemy : Actor
 	{
-		[Title("Movement Restriction")]
-		[SerializeField] private bool m_ShowBoundaryGizmo;
+		public BezierCurve movementCurve;
 
 		protected override void GetMoveInput()
 		{
-			float moveHorizontal = Input.GetAxisRaw("Horizontal");
-			float moveVertical = Input.GetAxisRaw("Vertical");
 			m_MovementDirection = new Vector3(moveHorizontal, moveVertical, 0);
 		}
 		protected override void GetShootInput()
@@ -22,11 +19,5 @@ namespace Game
 			m_DoShoot = (Input.GetKey(Game.KeyBindings.Shoot));
 		}
 
-		private void OnDrawGizmos()
-		{
-			if (m_ShowBoundaryGizmo)
-				Boundary.ShowGizmos(Color.yellow);
-		}
 	}
-
 }

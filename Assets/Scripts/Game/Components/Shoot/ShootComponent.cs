@@ -10,5 +10,8 @@ namespace Game.Components
     public struct ShootComponent : IComponentData
 	{
         public bool m_DoShoot;
+		public uint m_BulletId;
+		public int m_FireRate;
+		public int m_NextFire;
     }
 }
