@@ -12,7 +12,7 @@ namespace Game
 
 		protected override void GetMoveInput()
 		{
-			m_MovementDirection = new Vector3(moveHorizontal, moveVertical, 0);
+			m_MovementDirection = new Vector3(m_MovementDirection.x, m_MovementDirection.y, m_MovementDirection.z);
 		}
 		protected override void GetShootInput()
 		{
