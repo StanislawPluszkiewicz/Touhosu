@@ -170,6 +170,57 @@ MonoBehaviour:
   m_Projectile: {fileID: 552750533, guid: a21a18beb9751a04db7fc9e7b2b1f32b, type: 3}
   m_FireRate: 0.1
   m_BezierCurve: {fileID: 1838221221}
+--- !u!1 &617830017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 617830018}
+  - component: {fileID: 617830019}
+  m_Layer: 0
+  m_Name: StarsGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &617830018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617830017}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1173599474}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &617830019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617830017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3633a60b5b89656418a735ff2faa63a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinTimeBetweenItems: 3
+  MaxTimeBetweenItems: 5
+  ItemPrefab: {fileID: 5307656223589848411, guid: d427057fa8645b44cac6612fa710d7b1,
+    type: 3}
+  YSpawn: 100
+  MinXSpawn: -100
+  MaxXSpawn: 100
+  LifespanItems: 20
 --- !u!1 &729073805
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,6 +396,7 @@ Transform:
   - {fileID: 1664964951}
   - {fileID: 1548760849}
   - {fileID: 1940096737}
+  - {fileID: 617830018}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -558,7 +610,7 @@ MonoBehaviour:
   MaxTimeBetweenItems: 45
   ItemPrefab: {fileID: 9048549447234837235, guid: 93d4cd7c197aea4408eb1d93d3b2a027,
     type: 3}
-  YSpawn: 100
+  YSpawn: 120
   MinXSpawn: -75
   MaxXSpawn: 75
   LifespanItems: 90
@@ -895,10 +947,10 @@ MonoBehaviour:
   StarGroupAmount: 3
   MinX: -80
   MaxX: 80
-  YSpawn: 100
+  YSpawn: 120
   Interval: 20
   StarsPrefab: {fileID: 2690107732629482831, guid: 122256172f1238942b16e340a79ba9dd,
     type: 3}
   LifespanStars: 80
-  XError: 20
+  ErrorRandom: 10
   StarsScale: 3

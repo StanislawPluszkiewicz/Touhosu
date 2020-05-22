@@ -13,7 +13,7 @@ public class SmallStarsManager : MonoBehaviour
     [SerializeField] float Interval = 45f;
     [SerializeField] GameObject StarsPrefab;
     [SerializeField] float LifespanStars = 30f;
-    [SerializeField] float XError = 10f;
+    [SerializeField] float ErrorRandom = 10f;
     [SerializeField] float StarsScale = 3f;
     float nextSpawn = Time.time;
     float inter;
@@ -23,11 +23,19 @@ public class SmallStarsManager : MonoBehaviour
         inter = (MaxX - MinX) / (StarGroupAmount - 1f);
         for (int i = 0; i < StarGroupAmount; i++)
         {
-            GameObject group = Instantiate(StarsPrefab, new Vector3(MinX + inter * i + Helper.RandomBetweenFloats(0, XError), 0f, 15f), Quaternion.identity, transform);
+            GameObject group = Instantiate(StarsPrefab, new Vector3(MinX + inter * i + Helper.RandomBetweenFloats(0, ErrorRandom), YSpawn / 2 + Helper.RandomBetweenFloats(-ErrorRandom, ErrorRandom), 15f), Quaternion.identity, transform);
             group.AddComponent<BackgroundItemManager>();
             BackgroundItemManager bim = group.GetComponent<BackgroundItemManager>();
             group.transform.localScale *= StarsScale;
             bim.Lifespan = LifespanStars;
+        }
+        for (int i = 0; i < StarGroupAmount; i++)
+        {
+            GameObject group = Instantiate(StarsPrefab, new Vector3(MinX + inter * i + Helper.RandomBetweenFloats(0, ErrorRandom), -YSpawn / 2 + Helper.RandomBetweenFloats(ErrorRandom, ErrorRandom), 15f), Quaternion.identity, transform);
+            group.AddComponent<BackgroundItemManager>();
+            BackgroundItemManager bim = group.GetComponent<BackgroundItemManager>();
+            group.transform.localScale *= StarsScale;
+            bim.Lifespan = LifespanStars / 2;
         }
     }
     // Update is called once per frame
@@ -38,7 +46,7 @@ public class SmallStarsManager : MonoBehaviour
             nextSpawn = Time.time + Interval;
             for (int i = 0; i < StarGroupAmount; i++)
             {
-                GameObject group = Instantiate(StarsPrefab, new Vector3(MinX + inter * i + Helper.RandomBetweenFloats(0, XError), YSpawn, 15f), Quaternion.identity, transform);
+                GameObject group = Instantiate(StarsPrefab, new Vector3(MinX + inter * i + Helper.RandomBetweenFloats(0, ErrorRandom), YSpawn, 15f), Quaternion.identity, transform);
                 group.AddComponent<BackgroundItemManager>();
                 BackgroundItemManager bim = group.GetComponent<BackgroundItemManager>();
                 group.transform.localScale *= StarsScale;
