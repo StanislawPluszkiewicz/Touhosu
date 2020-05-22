@@ -5,19 +5,19 @@ using UnityEngine.UIElements;
 
 public class BackgroundItemManager : MonoBehaviour
 {
-    public float speed = 30f;
-    private float DeathStamp;
-    private float Lifespan = 30f;
+    public float Speed = 60f;
+    private float deathStamp;
+    public float Lifespan = 30f;
 
     void Start()
     {
-        DeathStamp = Time.time + Lifespan;
-        speed /= (3f - transform.localScale.x);
+        deathStamp = Time.time + Lifespan;
+        Speed /= transform.localScale.x;
     }
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y - speed * Time.deltaTime, 20f);
-        if (Time.time >= DeathStamp)
+        transform.position = new Vector3(transform.position.x, transform.position.y - Speed * Time.deltaTime, 20f);
+        if (Time.time >= deathStamp)
             Destroy(gameObject);
     }
 }

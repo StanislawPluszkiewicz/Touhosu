@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class BackgroundItemGenerator : MonoBehaviour
 {
-    [SerializeField] float MinTimeBetweenPlanets = 3f;
-    [SerializeField] float MaxTimeBetweenPlanets = 10f;
+    [SerializeField] float MinTimeBetweenItems = 3f;
+    [SerializeField] float MaxTimeBetweenItems = 10f;
     [SerializeField] GameObject ItemPrefab;
     [SerializeField] float YSpawn = 150f;
     [SerializeField] float MinXSpawn = -60f;
     [SerializeField] float MaxXSpawn = 60f;
+    [SerializeField] float LifespanItems = 30f;
 
     float nextItem;
     
@@ -25,11 +26,13 @@ public class BackgroundItemGenerator : MonoBehaviour
     {
         if(Time.time >= nextItem)
         {
-            nextItem = Time.time + Helper.RandomBetweenFloats(MinTimeBetweenPlanets, MaxTimeBetweenPlanets);
+            nextItem = Time.time + Helper.RandomBetweenFloats(MinTimeBetweenItems, MaxTimeBetweenItems);
 
             Vector3 spawnPosition = new Vector3(Helper.RandomBetweenFloats(MinXSpawn, MaxXSpawn), YSpawn, 0f);
-            GameObject generatedItem = Instantiate(ItemPrefab, spawnPosition, Quaternion.identity);
+            GameObject generatedItem = Instantiate(ItemPrefab, spawnPosition, Quaternion.identity, transform);
             generatedItem.AddComponent<BackgroundItemManager>();
+            BackgroundItemManager bim = generatedItem.GetComponent<BackgroundItemManager>();
+            bim.Lifespan = LifespanItems;
 
         }
     }
