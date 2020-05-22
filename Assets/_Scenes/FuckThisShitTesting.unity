@@ -323,7 +323,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1173599474}
-  - component: {fileID: 1173599475}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -347,19 +346,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1173599475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173599473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7488ef76d9aaa9f4e815da9a51ca9977, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollDirection: 2
 --- !u!1 &1466211907
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,14 +635,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633a60b5b89656418a735ff2faa63a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinTimeBetweenPlanets: 2
-  MaxTimeBetweenPlanets: 4
-  ItemPrefab: {fileID: 1401328852915308, guid: 4dfc20aff2fa7454caded1e19d2cafdc, type: 3}
+  MinTimeBetweenPlanets: 1
+  MaxTimeBetweenPlanets: 3
+  ItemPrefab: {fileID: 2296451991528311587, guid: 6050fd21d4cd6e44ea8fc284f079d44b,
+    type: 3}
   YSpawn: 100
   MinXSpawn: -70
   MaxXSpawn: 70
-  MinSpeed: 30
-  MaxSpeed: 70
 --- !u!1 &1685942674
 GameObject:
   m_ObjectHideFlags: 0
