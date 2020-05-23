@@ -6,10 +6,10 @@ namespace Game
 	[System.Serializable]
 	public static class Boundary
 	{
-		public static float xMin = -50f;
-		public static float xMax = 50f;
-		public static float yMin = -10f;
-		public static float yMax = 40f;
+		public static float xMin = -100f;
+		public static float xMax = 100f;
+		public static float yMin = -55f;
+		public static float yMax = 55f;
 
 		public static Vector3 ClampPosition(Vector3 v, float height = 0.0f)
 		{

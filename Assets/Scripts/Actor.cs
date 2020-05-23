@@ -13,6 +13,8 @@ namespace Game
 		[Title("Movement")]
 		[SerializeField] protected float m_Height;
 		[SerializeField] protected float m_Speed;
+
+		[SerializeField] protected float m_AngularSpeed;
 		[SerializeField] protected float m_Tilt;
 		protected Vector3 m_MovementDirection;
 
@@ -55,7 +57,9 @@ namespace Game
 			Vector3 velocity = m_MovementDirection * m_Speed * Time.deltaTime;
 			transform.position = Boundary.ClampPosition(transform.position + velocity, m_Height);
 
-			_rb.rotation = Quaternion.Euler(0.0f, Mathf.Lerp(_rb.rotation.y, m_MovementDirection.x * -m_Tilt, Time.deltaTime), 0.0f);
+			Quaternion desiredRotation = Quaternion.AngleAxis(m_MovementDirection.x * -m_Tilt, transform.up);
+			float rotationStep = Time.deltaTime * m_AngularSpeed;
+			transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, rotationStep);
 		}
 		#endregion
 		#region Shoot
@@ -72,6 +76,12 @@ namespace Game
 			}
 		}
 		#endregion
+
+		private void OnDrawGizmosSelected()
+		{
+			Gizmos.color = Color.red;
+			Gizmos.DrawLine(transform.position, transform.position + transform.forward * 5.0f);
+		}
 	}
 
 }
