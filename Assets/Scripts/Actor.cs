@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Game
 {
 	[RequireComponent(typeof(Rigidbody))]
-	public class Actor : MonoBehaviour
+	public class Actor : SerializedMonoBehaviour
 	{
 		[Title("Movement")]
 		[SerializeField] protected float m_Height;
@@ -29,12 +29,12 @@ namespace Game
 		protected Camera _cam;
 
 		#region UnityEvents
-		protected void Awake()
+		protected virtual void Awake()
 		{
 			_transform = transform;
 			_rb = GetComponent<Rigidbody>();
 		}
-		protected void Start()
+		protected virtual void Start()
 		{
 			_cam = Camera.main;
 			if (_cam == null) Debug.LogError("Make sure to tag a camera with the MainCamera tag!", this);
@@ -42,7 +42,7 @@ namespace Game
 			m_Weapons = GetComponentsInChildren<Weapon>();
 			if (m_Weapons.Length == 0) Debug.LogWarning("Actor has no weapons!", this);
 		}
-		protected void Update()
+		protected virtual void Update()
 		{
 			Move();
 			Shoot();
@@ -76,12 +76,6 @@ namespace Game
 			}
 		}
 		#endregion
-
-		private void OnDrawGizmosSelected()
-		{
-			Gizmos.color = Color.red;
-			Gizmos.DrawLine(transform.position, transform.position + transform.forward * 5.0f);
-		}
 	}
 
 }
