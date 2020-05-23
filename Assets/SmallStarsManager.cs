@@ -15,10 +15,15 @@ public class SmallStarsManager : MonoBehaviour
     [SerializeField] float LifespanStars = 30f;
     [SerializeField] float ErrorRandom = 10f;
     [SerializeField] float StarsScale = 3f;
-    float nextSpawn = Time.time;
+	float nextSpawn = 0.0f;
     float inter;
 
-    private void Start()
+	private void Awake()
+	{
+		nextSpawn = Time.time;
+	}
+
+	private void Start()
     {
         inter = (MaxX - MinX) / (StarGroupAmount - 1f);
         for (int i = 0; i < StarGroupAmount; i++)
