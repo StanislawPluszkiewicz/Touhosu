@@ -427,13 +427,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633a60b5b89656418a735ff2faa63a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinTimeBetweenItems: 3
-  MaxTimeBetweenItems: 5
+  MinTimeBetweenItems: 2
+  MaxTimeBetweenItems: 4
   ItemPrefab: {fileID: 5307656223589848411, guid: d427057fa8645b44cac6612fa710d7b1,
     type: 3}
   YSpawn: 100
-  MinXSpawn: -100
-  MaxXSpawn: 100
+  MinXSpawn: -130
+  MaxXSpawn: 130
   LifespanItems: 20
 --- !u!1 &703082213
 GameObject:
@@ -460,7 +460,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703082213}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a425312ebf92ca47a7d2f8cb7274c46, type: 3}
   m_Name: 
@@ -477,8 +477,9 @@ MonoBehaviour:
   m_Height: 5
   m_Speed: 10
   m_AngularSpeed: 0
-  m_Tilt: 0
-  movementPattern: {fileID: 11400000, guid: cccb14503b136154fa8d43eaa8697d7e, type: 2}
+  m_Tilt: 5
+  movementPattern: {fileID: 176475238}
+  RotateMovement: 1
 --- !u!54 &703082215
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1113,13 +1114,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3633a60b5b89656418a735ff2faa63a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinTimeBetweenItems: 30
-  MaxTimeBetweenItems: 45
+  MinTimeBetweenItems: 15
+  MaxTimeBetweenItems: 20
   ItemPrefab: {fileID: 9048549447234837235, guid: 93d4cd7c197aea4408eb1d93d3b2a027,
     type: 3}
   YSpawn: 120
-  MinXSpawn: -75
-  MaxXSpawn: 75
+  MinXSpawn: -100
+  MaxXSpawn: 100
   LifespanItems: 90
 --- !u!1001 &1654260083
 PrefabInstance:
@@ -1256,12 +1257,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinTimeBetweenItems: 1
-  MaxTimeBetweenItems: 3
+  MaxTimeBetweenItems: 2
   ItemPrefab: {fileID: 2296451991528311587, guid: 6050fd21d4cd6e44ea8fc284f079d44b,
     type: 3}
   YSpawn: 100
-  MinXSpawn: -100
-  MaxXSpawn: 100
+  MinXSpawn: -130
+  MaxXSpawn: 130
   LifespanItems: 20
 --- !u!1 &1685942674
 GameObject:
