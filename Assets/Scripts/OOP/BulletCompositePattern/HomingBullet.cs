@@ -13,7 +13,6 @@ public class HomingBullet : Bullet
 
 	public void Init(Vector3 shootDirection, Transform target, MovementPattern pattern = null)
 	{
-		Debug.Log("Shooting homing bullet ");
 		Init(shootDirection, pattern);
 		m_Target = target;
 	}

@@ -38,7 +38,7 @@ public class Bullet : Composite
 	#region Creation
 	public virtual Bullet Instantiate(Vector3 position, Transform parent)
 	{
-		return Instantiate(this, position, Quaternion.identity, parent);
+		return Instantiate(this, position, Quaternion.identity);
 	}
 	public void Init(Vector3 shootDirection, MovementPattern pattern = null)
 	{
@@ -93,7 +93,6 @@ public class Bullet : Composite
 	}
 	private void Update()
 	{
-		Debug.Log(gameObject.name + " - " + _rb.velocity);
 	}
 	private void OnDestroy()
 	{
