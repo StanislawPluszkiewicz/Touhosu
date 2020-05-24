@@ -7,27 +7,24 @@ using UnityEngine;
 
 public class HomingBullet : Bullet
 {
-	public override IEnumerator Create(Vector3 shootDirection, MovementPattern pattern)
-	{
-		_rb.velocity = shootDirection * m_Speed;
-		// TODO remove angular velocity
-		_rb.angularVelocity = shootDirection * m_Speed;
-		_rb.useGravity = false;
-		StartCoroutine(Travel(pattern));
-		yield return null;
-	}
-	public override IEnumerator Travel(MovementPattern pattern)
-	{
-		float birthTime = Time.time;
+	[Header("Homing Bullet - readonly")]
+	[ReadOnly] public Transform m_Target;
 
-		while (true)
-		{
-			float t = Time.time - birthTime;
-			float tDecimal = t - (float)Math.Truncate(t);
-			_rb.velocity = pattern.GetDirection(tDecimal) * m_Speed;
-			// Debug.Log("[" + tDecimal + "]: " + pattern.GetDirection(t));
-			yield return null;
-		}
+
+	public void Init(Vector3 shootDirection, Transform target, MovementPattern pattern = null)
+	{
+		Debug.Log("Shooting homing bullet ");
+		Init(shootDirection, pattern);
+		m_Target = target;
+	}
+	public override Vector3 GetShootDirection(float timeSinceBirth)
+	{
+		Vector3 v = base.GetShootDirection(timeSinceBirth);
+		return (v + (m_Target.position - transform.position)).normalized;
+	}
+	public override Vector3 SetCurrentVelocity(float timeSinceBirth)
+	{
+		return GetShootDirection(timeSinceBirth) * m_Speed * Time.deltaTime;
 	}
 
 }

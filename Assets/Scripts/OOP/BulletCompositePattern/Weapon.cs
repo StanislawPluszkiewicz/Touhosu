@@ -14,7 +14,7 @@ public class Weapon : SerializedMonoBehaviour
 	[SerializeField] Bullet m_BulletPrefab;
 	[SerializeField] float m_ShootVelocity;
 	[SerializeField] public MovementPattern m_ShootPattern;
-
+	public Transform m_Target;
 
 
 	private Vector3 GetFirePosition()
@@ -34,8 +34,14 @@ public class Weapon : SerializedMonoBehaviour
 	{
 		if (CanShoot())
 		{
-			Bullet p = Instantiate(m_BulletPrefab, GetFirePosition(), Quaternion.identity) as Bullet;
-			StartCoroutine(p.Create(transform.up, m_ShootPattern));
+			dynamic bullet = m_BulletPrefab.Instantiate(GetFirePosition(), transform);
+
+			if (bullet is HomingBullet)
+				(bullet as HomingBullet).Init(transform.up, m_Target, m_ShootPattern);
+			else if (bullet is Bullet)
+				(bullet as Bullet).Init(transform.up, m_ShootPattern);
+			StartCoroutine(bullet.Travel());
+
 			m_NextFireTime = Time.time + m_FireRate;
 		}
 	}

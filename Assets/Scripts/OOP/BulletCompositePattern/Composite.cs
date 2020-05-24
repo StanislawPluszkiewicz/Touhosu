@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 public class Composite : Component
 {
 	/* ===== Composite pattern implementation ===== */
+	[Header("Composite")]
 	public List<Component> m_Childs;
 	public void Add(Component c)
 	{
