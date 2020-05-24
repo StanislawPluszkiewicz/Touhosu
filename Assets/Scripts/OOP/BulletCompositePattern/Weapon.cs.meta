@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 60754c72ccd75bf4e97615333efcff05
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_FirePositionTransform: {instanceID: 0}
+  - m_BulletPrefab: {instanceID: 0}
+  - m_DefaultShootPattern: {fileID: 9049478266269048581, guid: 1bb0f6fee1330b54cb26223010751cd4,
+      type: 3}
+  - m_ShootPattern: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
