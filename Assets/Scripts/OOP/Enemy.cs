@@ -14,7 +14,7 @@ namespace Game
 
 		protected override void GetMoveInput()
 		{
-			m_MovementDirection = movementPattern.GetDirection(exploredPath);
+			m_MovementDirection = movementPattern.GetVelocity(exploredPath);
 			exploredPath += Time.deltaTime;
 
 			if(RotateMovement)

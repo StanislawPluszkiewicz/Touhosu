@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 using System;
 
-public class BezierSpline : MonoBehaviour {
+public class BezierSpline : SerializedMonoBehaviour {
 
 	[SerializeField]
 	private Vector3[] points;

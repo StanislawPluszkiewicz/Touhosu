@@ -14,7 +14,6 @@ public class Bullet : Composite
 	[Header("Bullet - readonly")]
 	[ReadOnly] public Vector3 m_ShootDirection; // Direction towards which the bullet was originally shot
 	[ReadOnly] public MovementPattern m_Pattern;
-	[ReadOnly] public Vector3 m_CurrentVelocity;
 
 	[HideInInspector] public Rigidbody _rb;
 
@@ -48,18 +47,17 @@ public class Bullet : Composite
 	#endregion
 
 	#region Translation
-	protected float GetDecimalTimeSinceBirth(float timeSinceBirth)
+	protected float GetDecimalTime(float t)
 	{
-		return timeSinceBirth - (float)Math.Truncate(timeSinceBirth);
+		return t - (float)Math.Truncate(t);
 	}
-	public virtual Vector3 GetShootDirection(float timeSinceBirth)
+	public virtual Vector3 GetShootDirection(float t)
 	{
-		float tDecimal = GetDecimalTimeSinceBirth(timeSinceBirth);
-		return (m_Pattern == null) ? m_ShootDirection : m_Pattern.GetDirection(tDecimal);
+		return (m_Pattern == null) ? m_ShootDirection : m_Pattern.GetVelocity(GetDecimalTime(t));
 	}
-	public virtual Vector3 SetCurrentVelocity(float timeSinceBirth)
+	public virtual Vector3 GetVelocity(float t)
 	{
-		return GetShootDirection(timeSinceBirth) * m_Speed * Time.deltaTime;
+		return GetShootDirection(t) /** m_Speed */ * Time.deltaTime;
 	}
 	public IEnumerator Travel()
 	{
@@ -67,9 +65,8 @@ public class Bullet : Composite
 
 		while (true)
 		{
-			float timeSinceBirth = Time.time - birthTime;
-			m_CurrentVelocity = SetCurrentVelocity(timeSinceBirth);
-			transform.position += m_CurrentVelocity;
+			float t = Time.time - birthTime;
+			transform.position += GetVelocity(t) * 2;
 			_rb.angularVelocity = m_ShootDirection * m_Speed;
 			yield return null;
 		}

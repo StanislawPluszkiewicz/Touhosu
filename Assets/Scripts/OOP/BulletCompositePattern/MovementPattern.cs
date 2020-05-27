@@ -14,9 +14,9 @@ public class MovementPattern : MonoBehaviour
 		m_BezierSpline = Instantiate(prefab, transform.position, Quaternion.identity, transform) as BezierSpline;
 	}
 
-	public Vector3 GetDirection(float t)
+	public Vector3 GetVelocity(float t)
 	{
-		return m_BezierSpline.GetDirection(t);
+		return m_BezierSpline.GetVelocity(t);
 	}
 
 }
