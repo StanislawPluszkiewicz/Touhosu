@@ -36,17 +36,9 @@ public class Bullet : Composite
 	#endregion
 
 	#region Translation
-	protected float GetDecimalTime(float t)
-	{
-		return t - (float)Math.Truncate(t);
-	}
-	public virtual Vector3 GetShootDirection(float t)
-	{
-		return (m_Motor == null) ? m_ShootDirection : m_Motor.GetVelocity(m_Motor.GetDecimalTime(t));
-	}
 	public virtual Vector3 GetVelocity(float t)
 	{
-		return GetShootDirection(t) * Time.deltaTime;
+		return m_Motor.GetFinalVelocity(t);
 	}
 	public IEnumerator Travel()
 	{
@@ -55,7 +47,7 @@ public class Bullet : Composite
 		while (true)
 		{
 			float t = Time.time - birthTime;
-			transform.position += GetVelocity(t); // dont ask why
+			transform.position += m_Motor.GetFinalVelocity(t);
 			_rb.angularVelocity = m_ShootDirection;
 			yield return null;
 		}

@@ -9,12 +9,10 @@ namespace Game
 	public class Enemy : Actor
 	{
 		public Motor m_Motor;
-		private float exploredPath = 0.0f;
 
 		protected override void GetMoveInput()
 		{
-			m_MovementDirection = m_Motor.GetVelocity(m_Motor.GetDecimalTime(exploredPath));
-			exploredPath += Time.deltaTime;
+			m_MovementDirection = m_Motor.GetFinalVelocity(m_TimeSinceBirth);
 		}
 		protected override void GetShootInput()
 		{

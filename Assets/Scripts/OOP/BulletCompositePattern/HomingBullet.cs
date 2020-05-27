@@ -17,13 +17,9 @@ public class HomingBullet : Bullet
 		Init(shootDirection, pattern);
 		m_Target = target;
 	}
-	public override Vector3 GetShootDirection(float timeSinceBirth)
+	public override Vector3 GetVelocity(float t)
 	{
-		Vector3 v = base.GetShootDirection(timeSinceBirth);
-		return (v + (m_Target.position - transform.position)) / m_Homingness;
-	}
-	public override Vector3 GetVelocity(float timeSinceBirth)
-	{
-		return GetShootDirection(timeSinceBirth) * Time.deltaTime;
+		return (base.GetVelocity(t) + (m_Target.position - transform.position)) 
+			/ m_Homingness;
 	}
 }
