@@ -8,17 +8,13 @@ namespace Game
 {
 	public class Enemy : Actor
 	{
-		public MovementPattern movementPattern;
+		public Motor motor;
 		private float exploredPath = 0.0f;
-		public bool RotateMovement = true;
 
 		protected override void GetMoveInput()
 		{
-			m_MovementDirection = movementPattern.GetVelocity(exploredPath);
+			m_MovementDirection = motor.GetVelocity(exploredPath);
 			exploredPath += Time.deltaTime;
-
-			if(RotateMovement)
-				transform.eulerAngles = new Vector3(0, 180f, 360f - Vector3.Angle(Vector3.up, m_MovementDirection));
 		}
 		protected override void GetShootInput()
 		{

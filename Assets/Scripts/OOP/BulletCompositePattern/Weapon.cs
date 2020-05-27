@@ -13,7 +13,7 @@ public class Weapon : SerializedMonoBehaviour
 	[SerializeField] GameObject m_FirePositionTransform;
 	[SerializeField] Bullet m_BulletPrefab;
 	[SerializeField] float m_ShootVelocity;
-	[SerializeField] public MovementPattern m_ShootPattern;
+	[SerializeField] public Motor m_ShootPattern;
 	public Transform m_Target;
 
 
@@ -26,8 +26,8 @@ public class Weapon : SerializedMonoBehaviour
 
 	public void CreateDefaultShootPattern()
 	{
-		MovementPattern prefab = Resources.Load<MovementPattern>("movement_pattern_default");
-		m_ShootPattern = Instantiate(prefab, transform.position, Quaternion.identity, transform) as MovementPattern;
+		Motor prefab = Resources.Load<Motor>("movement_pattern_default");
+		m_ShootPattern = Instantiate(prefab, transform.position, Quaternion.identity, transform) as Motor;
 	}
 
 	public void Shoot()

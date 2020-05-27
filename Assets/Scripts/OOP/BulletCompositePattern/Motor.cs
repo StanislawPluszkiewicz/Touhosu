@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class MovementPattern : MonoBehaviour
+public class Motor : MonoBehaviour
 {
 	// [SerializeField] BezierCurve m_BezierCurve;
 	[SerializeField] public BezierSpline m_BezierSpline;

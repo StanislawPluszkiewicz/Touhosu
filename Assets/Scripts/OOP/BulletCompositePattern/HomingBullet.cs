@@ -11,7 +11,7 @@ public class HomingBullet : Bullet
 	[ReadOnly] public Transform m_Target;
 
 
-	public void Init(Vector3 shootDirection, Transform target, MovementPattern pattern = null)
+	public void Init(Vector3 shootDirection, Transform target, Motor pattern = null)
 	{
 		Init(shootDirection, pattern);
 		m_Target = target;

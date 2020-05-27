@@ -13,7 +13,7 @@ public class Bullet : Composite
 
 	[Header("Bullet - readonly")]
 	[ReadOnly] public Vector3 m_ShootDirection; // Direction towards which the bullet was originally shot
-	[ReadOnly] public MovementPattern m_Pattern;
+	[ReadOnly] public Motor m_Pattern;
 
 	[HideInInspector] public Rigidbody _rb;
 
@@ -39,7 +39,7 @@ public class Bullet : Composite
 	{
 		return Instantiate(this, position, Quaternion.identity);
 	}
-	public void Init(Vector3 shootDirection, MovementPattern pattern = null)
+	public void Init(Vector3 shootDirection, Motor pattern = null)
 	{
 		m_Pattern = pattern;
 		m_ShootDirection = shootDirection;

@@ -17,6 +17,8 @@ namespace Game
 		[SerializeField] protected float m_AngularSpeed;
 		[SerializeField] protected float m_Tilt;
 		protected Vector3 m_MovementDirection;
+		public Vector3 MovementDirection { get => m_MovementDirection; }
+		public float AngularSpeed { get => m_AngularSpeed; }
 
 
 		[Title("Shoot")]
@@ -27,6 +29,7 @@ namespace Game
 		protected Transform _transform;
 		protected Rigidbody _rb;
 		protected Camera _cam;
+
 
 		#region UnityEvents
 		protected virtual void Awake()
