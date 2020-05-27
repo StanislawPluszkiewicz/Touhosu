@@ -1,5 +1,4 @@
-﻿using Assets.Scripts;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +27,10 @@ public class SmallStarsManager : MonoBehaviour
         inter = (MaxX - MinX) / (StarGroupAmount - 1f);
         for (int i = 0; i < StarGroupAmount; i++)
         {
-            GameObject group = Instantiate(StarsPrefab, new Vector3(MinX + inter * i + Helper.RandomBetweenFloats(0, ErrorRandom), YSpawn / 2 + Helper.RandomBetweenFloats(-ErrorRandom, ErrorRandom), 15f), Quaternion.identity, transform);
+            GameObject group = Instantiate(StarsPrefab, 
+				new Vector3(MinX + inter * i + Game.Helper.RandomBetweenFloats(0, ErrorRandom), 
+				YSpawn / 2 + Game.Helper.RandomBetweenFloats(-ErrorRandom, ErrorRandom), 15f), 
+				Quaternion.identity, transform);
             group.AddComponent<BackgroundItemManager>();
             BackgroundItemManager bim = group.GetComponent<BackgroundItemManager>();
             group.transform.localScale *= StarsScale;
@@ -36,7 +38,10 @@ public class SmallStarsManager : MonoBehaviour
         }
         for (int i = 0; i < StarGroupAmount; i++)
         {
-            GameObject group = Instantiate(StarsPrefab, new Vector3(MinX + inter * i + Helper.RandomBetweenFloats(0, ErrorRandom), -YSpawn / 2 + Helper.RandomBetweenFloats(ErrorRandom, ErrorRandom), 15f), Quaternion.identity, transform);
+            GameObject group = Instantiate(StarsPrefab, 
+				new Vector3(MinX + inter * i + Game.Helper.RandomBetweenFloats(0, ErrorRandom), 
+				-YSpawn / 2 + Game.Helper.RandomBetweenFloats(ErrorRandom, ErrorRandom), 15f), 
+				Quaternion.identity, transform);
             group.AddComponent<BackgroundItemManager>();
             BackgroundItemManager bim = group.GetComponent<BackgroundItemManager>();
             group.transform.localScale *= StarsScale;
@@ -51,7 +56,10 @@ public class SmallStarsManager : MonoBehaviour
             nextSpawn = Time.time + Interval;
             for (int i = 0; i < StarGroupAmount; i++)
             {
-                GameObject group = Instantiate(StarsPrefab, new Vector3(MinX + inter * i + Helper.RandomBetweenFloats(0, ErrorRandom), YSpawn, 15f), Quaternion.identity, transform);
+                GameObject group = Instantiate(StarsPrefab, 
+					new Vector3(MinX + inter * i + Game.Helper.RandomBetweenFloats(0, ErrorRandom), 
+					YSpawn, 15f), 
+					Quaternion.identity, transform);
                 group.AddComponent<BackgroundItemManager>();
                 BackgroundItemManager bim = group.GetComponent<BackgroundItemManager>();
                 group.transform.localScale *= StarsScale;

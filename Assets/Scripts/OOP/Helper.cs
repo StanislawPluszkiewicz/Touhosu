@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts
+namespace Game
 {
     public static class Helper
     {
@@ -14,5 +14,10 @@ namespace Assets.Scripts
         {
             return min + (max - min) * (float)rng.NextDouble();
         }
-    }
+
+		public static int RandomBetween(int min, int max)
+		{
+			return min + (max - min) * (int)rng.NextDouble();
+		}
+	}
 }

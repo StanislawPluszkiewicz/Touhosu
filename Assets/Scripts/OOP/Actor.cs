@@ -46,26 +46,35 @@ namespace Game
 
 			m_Weapons = GetComponentsInChildren<Weapon>();
 			if (m_Weapons.Length == 0) Debug.LogWarning("Actor has no weapons!", this);
+
+
+
+			StartCoroutine(Move());
 		}
 		protected virtual void Update()
 		{
-			Move();
 			Shoot();
 			m_TimeSinceBirth += Time.deltaTime;
 		}
 		#endregion
 		#region Movement
 		protected virtual void GetMoveInput() { }
-		public void Move()
+		public IEnumerator Move()
 		{
-			GetMoveInput();
+			float startTime = Time.time;
 
-			Vector3 velocity = GetVelocity();
-			transform.position = Boundary.ClampPosition(transform.position + velocity, m_Height);
+			while (true)
+			{
+				GetMoveInput();
 
+				transform.position += GetVelocity(startTime);
+				transform.position = Boundary.ClampPosition(transform.position, m_Height);
+				startTime += Time.deltaTime;
+				yield return null;
+			}
 		}
 
-		public virtual Vector3 GetVelocity()
+		public virtual Vector3 GetVelocity(float t)
 		{
 			Debug.LogError("bien tenté", this);
 			return Vector3.zero;

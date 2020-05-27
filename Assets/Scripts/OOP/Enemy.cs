@@ -10,9 +10,9 @@ namespace Game
 	{
 		public Motor m_Motor;
 
-		public override Vector3 GetVelocity()
+		public override Vector3 GetVelocity(float t)
 		{
-			return m_Motor.GetFinalVelocity(m_TimeSinceBirth);
+			return m_Motor.GetFinalVelocity(t) * m_Speed;
 		}
 		protected override void GetMoveInput()
 		{

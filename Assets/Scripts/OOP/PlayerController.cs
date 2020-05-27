@@ -27,9 +27,9 @@ namespace Game
 			if (m_ShowBoundaryGizmo)
 				Boundary.ShowGizmos(Color.yellow);
 		}
-		public override Vector3 GetVelocity()
+		public override Vector3 GetVelocity(float t)
 		{
-			return m_MovementDirection * m_Speed * Time.deltaTime;
+			return m_MovementDirection * m_Speed * t;
 		}
 	}
 
