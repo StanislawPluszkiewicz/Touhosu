@@ -187,8 +187,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Childs: []
   m_LifeTime: 10
-  m_Speed: 10
   m_ShootDirection: {x: 0, y: 0, z: 0}
-  m_Pattern: {fileID: 0}
+  m_Motor: {fileID: 0}
   _rb: {fileID: 0}
   m_Target: {fileID: 0}
+  m_Homingness: 2

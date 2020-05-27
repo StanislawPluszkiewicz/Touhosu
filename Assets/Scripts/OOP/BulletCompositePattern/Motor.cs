@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -19,4 +20,8 @@ public class Motor : MonoBehaviour
 		return m_BezierSpline.GetVelocity(t);
 	}
 
+	public float GetDecimalTime(float t)
+	{
+		return t - (float)Math.Truncate(t);
+	}
 }
