@@ -12,7 +12,6 @@ namespace Game
 	{
 		[Title("Movement")]
 		[SerializeField] protected float m_Height;
-		[SerializeField] protected float m_Speed;
 
 		[SerializeField] protected float m_AngularSpeed;
 		protected Vector3 m_MovementDirection;

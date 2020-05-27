@@ -8,6 +8,7 @@ namespace Game
 {
 	public class PlayerController : Actor
 	{
+		[SerializeField] protected float m_Speed;
 		[Title("Movement Restriction")]
 		[SerializeField] private bool m_ShowBoundaryGizmo;
 

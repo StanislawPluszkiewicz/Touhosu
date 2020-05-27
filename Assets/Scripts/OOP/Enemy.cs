@@ -9,14 +9,15 @@ namespace Game
 	public class Enemy : Actor
 	{
 		public Motor m_Motor;
+		[SerializeField] float m_TimeForBezier;
 
 		public override Vector3 GetVelocity(float t)
 		{
-			return m_Motor.GetFinalVelocity(t) * m_Speed;
+			return m_Motor.GetFinalVelocity(t) / m_TimeForBezier;
 		}
 		protected override void GetMoveInput()
 		{
-			m_MovementDirection = m_Motor.GetFinalVelocity(m_TimeSinceBirth);
+			m_MovementDirection = m_Motor.GetFinalVelocity(1 / m_TimeForBezier);
 		}
 		protected override void GetShootInput()
 		{
@@ -26,7 +27,7 @@ namespace Game
 		private void OnDrawGizmosSelected()
 		{
 			Gizmos.color = Color.magenta;
-			Gizmos.DrawLine(transform.position, transform.position + m_MovementDirection * m_Speed);
+			Gizmos.DrawLine(transform.position, transform.position + m_MovementDirection / m_TimeForBezier);
 		}
 	}
 }
