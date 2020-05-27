@@ -15,7 +15,6 @@ namespace Game
 		[SerializeField] protected float m_Speed;
 
 		[SerializeField] protected float m_AngularSpeed;
-		[SerializeField] protected float m_Tilt;
 		protected Vector3 m_MovementDirection;
 
 		protected float m_TimeSinceBirth = 0.0f;
@@ -61,15 +60,15 @@ namespace Game
 		{
 			GetMoveInput();
 
-			Vector3 velocity = m_MovementDirection * m_Speed * Time.deltaTime;
+			Vector3 velocity = GetVelocity();
 			transform.position = Boundary.ClampPosition(transform.position + velocity, m_Height);
 
-			if (m_Tilt != 0)
-			{
-				Quaternion desiredRotation = Quaternion.AngleAxis(m_MovementDirection.x * -m_Tilt, transform.up);
-				float rotationStep = Time.deltaTime * m_AngularSpeed;
-				transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, rotationStep);
-			}
+		}
+
+		public virtual Vector3 GetVelocity()
+		{
+			Debug.LogError("bien tenté", this);
+			return Vector3.zero;
 		}
 		#endregion
 		#region Shoot

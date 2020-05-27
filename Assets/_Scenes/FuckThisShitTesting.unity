@@ -268,7 +268,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384791796}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 967794210}
@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ce5bdda003738489d1247b1e59c0b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Tilt: 0
 --- !u!1 &435727129
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +385,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461200521}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -542,10 +543,9 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_Height: 5
-  m_Speed: 1
+  m_Speed: 0.01
   m_AngularSpeed: 90
-  m_Tilt: 5
-  motor: {fileID: 461200522}
+  m_Motor: {fileID: 461200522}
 --- !u!54 &703082215
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1448,7 +1448,6 @@ MonoBehaviour:
   m_Height: 5
   m_Speed: 50
   m_AngularSpeed: 1.5
-  m_Tilt: 35
   m_ShowBoundaryGizmo: 1
 --- !u!54 &1685942677
 Rigidbody:

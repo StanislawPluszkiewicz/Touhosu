@@ -10,6 +10,10 @@ namespace Game
 	{
 		public Motor m_Motor;
 
+		public override Vector3 GetVelocity()
+		{
+			return m_Motor.GetFinalVelocity(m_TimeSinceBirth);
+		}
 		protected override void GetMoveInput()
 		{
 			m_MovementDirection = m_Motor.GetFinalVelocity(m_TimeSinceBirth);
