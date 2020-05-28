@@ -7,7 +7,6 @@ public class BezierSpline : SerializedMonoBehaviour {
 	[SerializeField]
 	private Vector3[] points;
 
-
 	[SerializeField]
 	private BezierControlPointMode[] modes;
 
@@ -132,6 +131,7 @@ public class BezierSpline : SerializedMonoBehaviour {
 	}
 
 	public Vector3[] Points { get => points; set => points = value; }
+	public Vector3[] Points1 { get => points; set => points = value; }
 
 	public Vector3 GetPoint (float t) {
 		int i;
@@ -165,6 +165,15 @@ public class BezierSpline : SerializedMonoBehaviour {
 	
 	public Vector3 GetDirection (float t) {
 		return GetVelocity(t).normalized;
+	}
+
+	public float GetDecimalTime(float t)
+	{
+		return t - (float)Math.Truncate(t);
+	}
+	public Vector3 GetFinalVelocity(float t)
+	{
+		return GetVelocity(GetDecimalTime(t)) * Time.deltaTime;
 	}
 
 	public void AddCurve () {

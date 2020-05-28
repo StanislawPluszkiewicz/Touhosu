@@ -18,7 +18,7 @@ namespace Game
 
 		[Header("Bullet - readonly")]
 		[ReadOnly] public Vector3 m_ShootDirection; // Direction towards which the bullet was originally shot
-		[ReadOnly] public Motor m_Motor;
+		[ReadOnly] public BezierSpline m_Motor;
 
 		[HideInInspector] public Rigidbody _rb;
 
@@ -34,7 +34,7 @@ namespace Game
 		{
 			return Instantiate(this, position, Quaternion.identity);
 		}
-		public void Init(Vector3 shootDirection, Motor pattern = null)
+		public void Init(Vector3 shootDirection, BezierSpline pattern = null)
 		{
 			m_Motor = pattern;
 			m_ShootDirection = shootDirection;

@@ -44,9 +44,7 @@ namespace Game
 			if (_cam == null) Debug.LogError("Make sure to tag a camera with the MainCamera tag!", this);
 
 			m_Weapons = GetComponentsInChildren<Weapon>();
-			if (m_Weapons.Length == 0) Debug.LogWarning("Actor has no weapons!", this);
-
-
+			if (m_Weapons.Length == 0) Debug.LogError("Actor has no weapons!", this);
 
 			StartCoroutine(Move());
 		}

@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(BezierSpline))]
+[CustomEditor(typeof(BezierSpline)), CanEditMultipleObjects]
 public class BezierSplineInspector : Editor {
 
 	private const int stepsPerCurve = 10;
@@ -106,7 +106,7 @@ public class BezierSplineInspector : Editor {
 		}
 	}
 
-	private void ShowDirections ()
+	public void ShowDirections ()
 	{
 		if (spline != null)
 		{
@@ -121,7 +121,7 @@ public class BezierSplineInspector : Editor {
 			}
 		}
 	}
-	private Vector3 ShowPoint (int index)
+	public Vector3 ShowPoint (int index)
 	{
 		if (spline != null)
 		{

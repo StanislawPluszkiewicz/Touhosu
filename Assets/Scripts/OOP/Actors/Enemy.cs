@@ -8,7 +8,7 @@ namespace Game
 {
 	public class Enemy : Actor
 	{
-		public Motor m_MovementMotor;
+		public BezierSpline m_MovementMotor;
 		[SerializeField] float m_TimeForBezier;
 		
 		protected override Vector3 GetMoveInput()

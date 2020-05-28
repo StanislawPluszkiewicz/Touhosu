@@ -8,14 +8,21 @@ namespace Game
 {
 	public class Weapon : SerializedMonoBehaviour
 	{
-		[SerializeField] List<Shooter> m_Shooters;
+		[SerializeField] Shooter[] m_Shooters;
 		public Transform m_Target;
+
+		public void Awake()
+		{
+			m_Shooters = GetComponentsInChildren<Shooter>();
+			if (m_Shooters.Length == 0) Debug.LogError("Weapon has no Shooter!", this);
+		}
 
 		public void Shoot()
 		{
-			foreach (Shooter prefab in m_Shooters)
+			foreach (Shooter instance in m_Shooters)
 			{
-				prefab.Shoot(m_Target);
+				Debug.Log(instance);
+				instance.Shoot(m_Target);
 			}
 		}
 	}
