@@ -21,8 +21,7 @@ namespace Game
 		}
 		public override Vector3 GetVelocity(float t)
 		{
-			return (base.GetVelocity(t) + (m_Target.position - transform.position))
-				/ m_Homingness;
+			return (base.GetVelocity(t) / m_Homingness) + (m_Target.position - transform.position) * m_Homingness;
 		}
 	}
 }
