@@ -7,6 +7,7 @@ public class BezierSpline : SerializedMonoBehaviour {
 	[SerializeField]
 	private Vector3[] points;
 
+
 	[SerializeField]
 	private BezierControlPointMode[] modes;
 
@@ -129,6 +130,8 @@ public class BezierSpline : SerializedMonoBehaviour {
 			return (points.Length - 1) / 3;
 		}
 	}
+
+	public Vector3[] Points { get => points; set => points = value; }
 
 	public Vector3 GetPoint (float t) {
 		int i;

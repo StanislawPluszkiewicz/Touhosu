@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &49332169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 49332170}
+  - component: {fileID: 49332171}
+  m_Layer: 0
+  m_Name: motor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &49332170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49332169}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2969682838221423612}
+  m_Father: {fileID: 2969682839284913206}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &49332171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49332169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 622f7fd5019c63347b42d05cbb4c72ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BezierSpline: {fileID: 431453616}
 --- !u!1 &2969682838197052154
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,7 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2969682838221423612}
-  - component: {fileID: 2969682838221423613}
+  - component: {fileID: 431453616}
   m_Layer: 0
   m_Name: bezier
   m_TagString: Untagged
@@ -56,13 +101,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2969682838221423603}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6, y: -0.5, z: 3.6}
+  m_LocalPosition: {x: -0.5999999, y: -0.49999878, z: 3.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2969682839284913206}
-  m_RootOrder: 1
+  m_Father: {fileID: 49332170}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2969682838221423613
+--- !u!114 &431453616
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,14 +116,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 2969682838221423603}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1716677d60c8ce2439d765aeef18421f, type: 3}
+  m_Script: {fileID: 11500000, guid: db382f6ea6ecd6a419027220b0e9c27a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   points:
-  - {x: -0.3865403, y: 0.000000029802322, z: -1.4006271}
-  - {x: -17.389135, y: 7.1626725, z: 0}
-  - {x: 18.015574, y: -2.2211473, z: 35.5772}
-  - {x: -2.9787846, y: 10.983185, z: 15.198273}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -5, z: 0}
+  - {x: 0, y: -15, z: 0}
+  - {x: 0, y: -20, z: 0}
+  modes: 0000000000000000
+  loop: 0
 --- !u!1 &2969682838568980687
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2969682838959084656}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -21, z: 0}
+  m_LocalPosition: {x: -0.2, y: 4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2965065705715384622}
@@ -273,7 +329,7 @@ MonoBehaviour:
     SerializationNodes: []
   m_Height: 5
   m_AngularSpeed: 90
-  m_Motor: {fileID: 2969682838999858190}
+  m_MovementMotor: {fileID: 0}
   m_TimeForBezier: 5
 --- !u!1 &2969682839284913205
 GameObject:
@@ -304,7 +360,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2969682838568980680}
-  - {fileID: 2969682838221423612}
+  - {fileID: 49332170}
   m_Father: {fileID: 2969682838197052155}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -329,11 +385,12 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_FireRate: 0.1
+  m_FireRate: 0.3
   m_FirePositionTransform: {fileID: 0}
-  m_BulletPrefab: {fileID: 552750533, guid: a21a18beb9751a04db7fc9e7b2b1f32b, type: 3}
+  m_BulletPrefab: {fileID: 6649412250726842785, guid: 3ee6b6da0fd11b4488803a76c89536e4,
+    type: 3}
   m_ShootVelocity: 10
-  m_ShootPattern: {fileID: 11400000, guid: cccb14503b136154fa8d43eaa8697d7e, type: 2}
+  m_ShootPattern: {fileID: 49332171}
   m_Target: {fileID: 0}
 --- !u!1 &2969682839527289455
 GameObject:
