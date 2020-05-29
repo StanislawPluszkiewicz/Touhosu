@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Game
 {
-	public class Bullet : Composite
+	public class Bullet : SerializedMonoBehaviour
 	{
 		[Tooltip("Bullets to be made are: " +
 			"BulletInteractable (an area that reacts to a bullet that enters it)" +
@@ -15,6 +15,7 @@ namespace Game
 
 		[Header("Bullet")]
 		public float m_LifeTime = 10f;
+		public List<Shooter> m_Shooters;
 
 		[Header("Bullet - readonly")]
 		[ReadOnly] public Vector3 m_ShootDirection; // Direction towards which the bullet was originally shot
@@ -23,10 +24,10 @@ namespace Game
 		[HideInInspector] public Rigidbody _rb;
 
 		#region Events
-		delegate void Event();
-		Event onBirth, onDeath;
-		private Event OnBirth { get => onBirth; set => onBirth = value; }
-		private Event OnDeath { get => onDeath; set => onDeath = value; }
+		public delegate void Event();
+		private Event onBirth, onDeath;
+		public Event OnBirth { get => onBirth; set => onBirth = value; }
+		public Event OnDeath { get => onDeath; set => onDeath = value; }
 		#endregion
 
 		#region Creation
@@ -60,6 +61,27 @@ namespace Game
 		}
 		#endregion
 
+		delegate void Fn();
+		private IEnumerator WaitAndDo(float seconds, Fn fn)
+		{
+			while (seconds > 0.0f)
+			{
+				seconds -= Time.deltaTime;
+				yield return null;
+			}
+			fn?.Invoke();
+			Helper.Destroy(gameObject);
+		}
+		private void OnDeathSpawn()
+		{
+			foreach (Shooter s in m_Shooters)
+			{
+				Shooter instance = Instantiate(s, transform.position, Quaternion.identity, null) as Shooter;
+				instance.Shoot();
+				Helper.Destroy(instance.gameObject);
+			}
+		}
+
 		#region Unity Events
 		private void Awake()
 		{
@@ -69,10 +91,11 @@ namespace Game
 				_rb = gameObject.AddComponent<Rigidbody>();
 			}
 			_rb.useGravity = false;
+			// _rb.isKinematic = true;
+			StartCoroutine(WaitAndDo(m_LifeTime, OnDeathSpawn));
 		}
 		private void Start()
 		{
-			Destroy(gameObject, m_LifeTime);
 			OnBirth?.Invoke();
 		}
 		private void Update()
@@ -81,7 +104,7 @@ namespace Game
 		private void OnDestroy()
 		{
 			StopCoroutine(Travel());
-			OnDeath?.Invoke();
+			// OnDeath?.Invoke();
 		}
 		#endregion
 

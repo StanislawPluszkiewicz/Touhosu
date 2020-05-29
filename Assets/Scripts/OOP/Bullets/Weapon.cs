@@ -21,7 +21,6 @@ namespace Game
 		{
 			foreach (Shooter instance in m_Shooters)
 			{
-				Debug.Log(instance);
 				instance.Shoot(m_Target);
 			}
 		}

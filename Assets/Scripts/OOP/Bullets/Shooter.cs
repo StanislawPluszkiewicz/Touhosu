@@ -28,22 +28,16 @@ namespace Game
 				Debug.LogError("OnePrefabToRuleThemAll est nul", this);
 		}
 		[Button]
-		public void CleanSplines(bool useDestroyImmediate = true)
+		public void CleanSplines()
 		{
 			foreach (var s in m_Splines)
 			{
 				if (s)
-				{
-					if (useDestroyImmediate) DestroyImmediate(s.gameObject);
-					else Destroy(s.gameObject);
-				}
+					Helper.Destroy(s.gameObject);
 			}
 			m_Splines.Clear();
 			foreach (Transform child in transform)
-			{
-				if (useDestroyImmediate) DestroyImmediate(child.gameObject);
-				else Destroy(child.gameObject);
-			}
+				Helper.Destroy(child.gameObject);
 		}
 		
 		public void CreateSplines()
@@ -99,7 +93,7 @@ namespace Game
 						(bullet as HomingBullet).Init(transform.up, m_Target, s);
 					else if (bullet is Bullet)
 						(bullet as Bullet).Init(transform.up, s);
-					StartCoroutine(bullet.Travel());
+					bullet.StartCoroutine(bullet.Travel());
 				}
 				m_NextFireTime = Time.time + m_FireRate;
 			}
@@ -134,7 +128,7 @@ namespace Game
 
 		private void OnValidate()
 		{
-			CleanSplines(true);
+			CleanSplines();
 			CreateSplines();
 		}
 	}
