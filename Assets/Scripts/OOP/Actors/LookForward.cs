@@ -27,9 +27,9 @@ namespace Game
 
 			if (m_Tilt != 0)
 			{
-				Quaternion desiredRotation = Quaternion.AngleAxis(180f + movDirection.x * m_Tilt, transform.forward);
+				/*Quaternion desiredRotation = Quaternion.AngleAxis(180f + actor.MovementDirection.x * m_Tilt, transform.forward);
 				float rotationStep = Time.deltaTime * actor.AngularSpeed;
-				transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, rotationStep);
+				transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, rotationStep);*/
 			}
 		}
 	}
