@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4907324918120471152}
   - component: {fileID: 4720658912337378935}
   - component: {fileID: 6649412250726842785}
-  - component: {fileID: 751555719857997727}
+  - component: {fileID: 6816738059625475843}
   m_Layer: 0
-  m_Name: Banana 3
+  m_Name: Banana matryo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.8907156, b: 0.4198113, a: 1}
+  m_Color: {r: 0.41960788, g: 1, b: 0.42426464, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -116,12 +116,13 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_LifeTime: 3
-  m_Shooters: []
+  m_LifeTime: 2
+  m_Shooters:
+  - {fileID: 4623818605417723025, guid: 9fce9d1c4d629f844891079a4ba63e37, type: 3}
   m_ShootDirection: {x: 0, y: 0, z: 0}
   m_Motor: {fileID: 0}
   _rb: {fileID: 0}
---- !u!65 &751555719857997727
+--- !u!65 &6816738059625475843
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

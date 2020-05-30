@@ -17,7 +17,6 @@ namespace Game
 			Enemy e = Instantiate(prefabs[i]) as Enemy;
 			e.transform.parent = transform;
 			e.transform.position = transform.position;
-
 		}
 	}
 }
