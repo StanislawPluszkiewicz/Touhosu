@@ -39,7 +39,7 @@ namespace Game
 			foreach (Transform child in transform)
 				Helper.Destroy(child.gameObject);
 		}
-		
+		[Button]
 		public void CreateSplines()
 		{
 			CreationMethod(Rotation1);
@@ -50,14 +50,14 @@ namespace Game
 		{
 			return Quaternion.AngleAxis(i * m_AngleSpread, t.forward);
 		}
-
 		private void CreationMethod(RotationMethod fn)
 		{
 			int n = (int)m_Directions / 2;
 			for (int i = -n; i <= n; ++i)
 			{
 				BezierSpline s = Instantiate(OnePrefabToRuleThemAll,
-					transform.position, Quaternion.identity, transform) as BezierSpline;
+				transform.position, Quaternion.identity, CoroutineManager.Instance.transform) as BezierSpline;
+
 				Quaternion rotation = fn(i, transform);
 
 				Vector3 p0 = s.GetControlPoint(0);
@@ -77,12 +77,8 @@ namespace Game
 			}
 		}
 
-
-
-
 		public void Shoot(Transform m_Target = null)
 		{
-			Debug.Log(CanShoot());
 			if (CanShoot())
 			{
 				foreach (var s in m_Splines)
@@ -93,18 +89,15 @@ namespace Game
 						(bullet as HomingBullet).Init(transform.up, m_Target, s);
 					else if (bullet is Bullet)
 						(bullet as Bullet).Init(transform.up, s);
-					bullet.StartCoroutine(bullet.Travel());
+					bullet.StartTravel();
 				}
 				m_NextFireTime = Time.time + m_FireRate;
 			}
 		}
-
-
 		private bool CanShoot()
 		{
 			return Time.time > m_NextFireTime;
 		}
-
 		private void OnDrawGizmosSelected()
 		{
 			foreach (var s in m_Splines)
@@ -125,11 +118,10 @@ namespace Game
 				}
 			}
 		}
-
 		private void OnValidate()
 		{
-			CleanSplines();
-			CreateSplines();
+			// CleanSplines();
+			// CreateSplines();
 		}
 	}
 }

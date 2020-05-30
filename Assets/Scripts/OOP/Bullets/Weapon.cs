@@ -24,5 +24,10 @@ namespace Game
 				instance.Shoot(m_Target);
 			}
 		}
+
+		public void SetTarget(Transform t)
+		{
+			m_Target = t;
+		}
 	}
 }

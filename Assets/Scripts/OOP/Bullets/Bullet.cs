@@ -47,13 +47,18 @@ namespace Game
 		{
 			return m_Motor.GetFinalVelocity(t);
 		}
-		public IEnumerator Travel()
+		public void StartTravel()
+		{
+			CoroutineManager.Instance.StartCoroutine(Travel());
+		}
+		protected IEnumerator Travel()
 		{
 			float birthTime = Time.time;
 
 			while (this != null)
 			{
 				float t = Time.time - birthTime;
+				Debug.Log(m_Motor, this);
 				transform.position += m_Motor.GetFinalVelocity(t);
 				_rb.angularVelocity = m_ShootDirection;
 				yield return null;
@@ -78,7 +83,7 @@ namespace Game
 			{
 				Shooter instance = Instantiate(s, transform.position, Quaternion.identity, null) as Shooter;
 				instance.Shoot();
-				Helper.Destroy(instance.gameObject);
+				// Helper.Destroy(instance.gameObject);
 			}
 		}
 
@@ -92,7 +97,7 @@ namespace Game
 			}
 			_rb.useGravity = false;
 			// _rb.isKinematic = true;
-			StartCoroutine(WaitAndDo(m_LifeTime, OnDeathSpawn));
+			CoroutineManager.Instance.StartCoroutine(WaitAndDo(m_LifeTime, OnDeathSpawn));
 		}
 		private void Start()
 		{
