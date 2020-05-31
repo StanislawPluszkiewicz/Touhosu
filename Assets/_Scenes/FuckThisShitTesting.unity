@@ -202,7 +202,7 @@ PrefabInstance:
     - target: {fileID: 4171203028071532579, guid: 28491aa858cc2934bb577fa13f77eddc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4171203028071532579, guid: 28491aa858cc2934bb577fa13f77eddc,
         type: 3}
@@ -774,7 +774,7 @@ MonoBehaviour:
   EnemyToSpawn: {fileID: 8548616419051290411, guid: 3c1a25e9de2054f4598f80c0ce181d62,
     type: 3}
   TimeBeforeWave: 1
-  AmountToSpawn: 5
+  AmountToSpawn: 10
   TimeBetweenEachEnemy: 0.5
 --- !u!4 &1274672486
 Transform:
@@ -803,6 +803,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 229550162063767950, guid: 3c1a25e9de2054f4598f80c0ce181d62,
         type: 3}
+    - target: {fileID: 229550162063767951, guid: 3c1a25e9de2054f4598f80c0ce181d62,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1002620699799885543, guid: 3c1a25e9de2054f4598f80c0ce181d62,
         type: 3}
       propertyPath: serializationData.Prefab
@@ -1021,7 +1026,7 @@ PrefabInstance:
     - target: {fileID: 4171203028071532579, guid: 28491aa858cc2934bb577fa13f77eddc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4171203028071532579, guid: 28491aa858cc2934bb577fa13f77eddc,
         type: 3}
@@ -1556,7 +1561,7 @@ PrefabInstance:
     - target: {fileID: 4171203028071532579, guid: 28491aa858cc2934bb577fa13f77eddc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4171203028071532579, guid: 28491aa858cc2934bb577fa13f77eddc,
         type: 3}
