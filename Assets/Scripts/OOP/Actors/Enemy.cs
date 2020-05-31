@@ -48,8 +48,7 @@ namespace Game
 		{
 			HP -= dmg;
 			if (HP <= 0)
-				Destroy();
-
+				StartCoroutine(Destroy());
 		}
 	}
 }

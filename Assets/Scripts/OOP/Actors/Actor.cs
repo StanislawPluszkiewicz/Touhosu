@@ -41,6 +41,7 @@ namespace Game
 
 		public IEnumerator Destroy()
 		{
+			Debug.Log("Destroying " + gameObject.name);
 			StopAllCoroutines();
 			m_Destroying = true;
 			foreach (Weapon w in m_Weapons)
