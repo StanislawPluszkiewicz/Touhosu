@@ -23,7 +23,7 @@ namespace Game
 		{
 			return LayerMask.NameToLayer("Enemy Bullet");
 		}
-
+		
 		private void OnDrawGizmosSelected()
 		{
 			Gizmos.color = Color.magenta;

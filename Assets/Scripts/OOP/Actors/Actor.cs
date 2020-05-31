@@ -31,11 +31,17 @@ namespace Game
 		protected Rigidbody _rb;
 		protected Camera _cam;
 
+		#region Collisions
+		public void TakeDamage(float dmg)
+		{
+			Debug.Log("Ship taking damage");
+		}
 		protected virtual LayerMask GetProjectileLayerMask()
 		{
 			Debug.LogError("GetLayerMask", this);
 			return LayerMask.NameToLayer("None");
 		}
+		#endregion
 
 		#region UnityEvents
 		protected virtual void Awake()

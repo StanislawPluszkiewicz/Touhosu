@@ -3,10 +3,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Entities;
+using UnityEditor;
 using UnityEngine;
 
 namespace Game
 {
+	[ExecuteInEditMode]
 	public class Shooter : SerializedMonoBehaviour
 	{
 		[Tooltip("Once you have setup the variables below press the button 'CreateSplines'")]
@@ -19,8 +21,8 @@ namespace Game
 		[SerializeField] float m_SplineLength;
 		float m_NextFireTime;
 
-		[SerializeField] [ReadOnly] public 
-			List<BezierSpline> m_Splines;
+		[SerializeField, ReadOnly] public List<BezierSpline> m_Splines;
+		[SerializeField, ReadOnly] private List<Bullet> m_Bullets;
 
 		public void Awake()
 		{
@@ -39,7 +41,8 @@ namespace Game
 			foreach (Transform child in transform)
 				Helper.Destroy(child.gameObject);
 		}
-		
+
+		[Button]
 		public void CreateSplines()
 		{
 			CreationMethod(Rotation1);
@@ -53,11 +56,22 @@ namespace Game
 
 		private void CreationMethod(RotationMethod fn)
 		{
+			Debug.Log("CreationMethod");
 			int n = (int)m_Directions / 2;
 			for (int i = -n; i <= n; ++i)
 			{
-				BezierSpline s = Instantiate(OnePrefabToRuleThemAll,
-					transform.position, Quaternion.identity, transform) as BezierSpline;
+				BezierSpline s = UnityEditor.PrefabUtility.InstantiatePrefab(OnePrefabToRuleThemAll) as BezierSpline; // allows in instantiate in edit mode
+				if (EditorApplication.isPlaying)
+				{
+					Debug.Log("Editor");
+				}
+				if (Application.isPlaying)
+				{
+					Debug.Log("Application");
+				}
+				s.transform.position = transform.position;
+				s.transform.rotation = Quaternion.identity;
+				s.transform.parent = transform;
 				Quaternion rotation = fn(i, transform);
 
 				Vector3 p0 = s.GetControlPoint(0);
@@ -80,12 +94,13 @@ namespace Game
 
 
 
-		public void Shoot(LayerMask ProjectileLayer, Transform m_Target = null)
+		public void Shoot(LayerMask ProjectileLayer, bool destroyAfterShootOneSalve = false, Transform m_Target = null)
 		{
 			if (CanShoot())
 			{
 				foreach (var s in m_Splines)
 				{
+
 					dynamic bullet = m_Prefab.Instantiate(transform.position, transform);
 
 					if (bullet is HomingBullet)
@@ -93,6 +108,18 @@ namespace Game
 					else if (bullet is Bullet)
 						(bullet as Bullet).Init(ProjectileLayer, transform.up, s);
 					bullet.StartCoroutine(bullet.Travel());
+					if (destroyAfterShootOneSalve)
+					{
+						m_Bullets.Add(bullet);
+						(bullet as Bullet).OnDeath += (Bullet instance) => 
+						{
+							m_Bullets.Remove(instance);
+							if (m_Bullets.Count == 0)
+							{
+								Helper.Destroy(gameObject);
+							}
+						};
+					}
 				}
 				m_NextFireTime = Time.time + m_FireRate;
 			}
@@ -127,8 +154,8 @@ namespace Game
 
 		private void OnValidate()
 		{
-			CleanSplines();
-			CreateSplines();
+			// CleanSplines();
+			// CreateSplines();
 		}
 	}
 }

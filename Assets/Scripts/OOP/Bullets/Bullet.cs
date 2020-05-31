@@ -16,6 +16,7 @@ namespace Game
 		[Header("Bullet")]
 		public float m_LifeTime = 10f;
 		public List<Shooter> m_Shooters;
+		public float m_Damage = 10.0f;
 
 		[Header("Bullet - readonly")]
 		[ReadOnly] public Vector3 m_ShootDirection; // Direction towards which the bullet was originally shot
@@ -24,12 +25,11 @@ namespace Game
 		[HideInInspector] public Rigidbody _rb;
 
 		#region Events
-		public delegate void Event();
+		public delegate void Event(Bullet instance);
 		private Event onBirth, onDeath;
 		public Event OnBirth { get => onBirth; set => onBirth = value; }
 		public Event OnDeath { get => onDeath; set => onDeath = value; }
 		#endregion
-
 		#region Creation
 		public virtual Bullet Instantiate(Vector3 position, Transform parent)
 		{
@@ -42,7 +42,6 @@ namespace Game
 			m_ShootDirection = shootDirection;
 		}
 		#endregion
-
 		#region Translation
 		public virtual Vector3 GetVelocity(float t)
 		{
@@ -61,7 +60,7 @@ namespace Game
 			}
 		}
 		#endregion
-
+		#region OnDeath
 		delegate void Fn();
 		private IEnumerator WaitAndDo(float seconds, Fn fn)
 		{
@@ -78,10 +77,71 @@ namespace Game
 			foreach (Shooter s in m_Shooters)
 			{
 				Shooter instance = Instantiate(s, transform.position, Quaternion.identity, null) as Shooter;
-				instance.Shoot(gameObject.layer);
-				Helper.Destroy(instance.gameObject);
+				// instance.CleanSplines();
+				// instance.CreateSplines();
+				instance.Shoot(gameObject.layer, true);
+				// Helper.Destroy(instance.gameObject);
 			}
 		}
+		private void DestroyWhenNotNeeded()
+		{
+
+		}
+		#endregion
+		#region OnCollision
+		protected virtual void TakeDamage(float dmg)
+		{
+			Debug.Log("On taking damage");
+		}
+		protected virtual void OnDoDamage()
+		{
+			Debug.Log("On doing damage");
+		}
+		bool Compare(LayerMask first, LayerMask second)
+		{
+			return (first == second);
+		}
+		private void OnCollisionEnter(Collision collision)
+		{
+			GameObject other = collision.collider.gameObject;
+
+			LayerMask	playerMask			= LayerMask.NameToLayer("Player"),
+						playerBulletMask	= LayerMask.NameToLayer("Player bullet"),
+						enemyMask			= LayerMask.NameToLayer("Enemy"),
+						enemyBulletMask		= LayerMask.NameToLayer("Enemy bullet");
+
+			if (Compare(gameObject.layer, playerBulletMask))
+			{
+				if (Compare(other.layer, enemyBulletMask))
+				{
+					dynamic otherBullet = other.GetComponent<Bullet>();
+					otherBullet?.TakeDamage(m_Damage);
+					OnDoDamage();
+				}
+				else if (Compare(other.layer, enemyMask))
+				{
+					Enemy otherEnemy = other.GetComponent<Enemy>();
+					otherEnemy?.TakeDamage(m_Damage);
+					OnDoDamage();
+				}
+			}
+			else if (Compare(gameObject.layer, enemyBulletMask))
+			{
+				if (Compare(other.layer, playerBulletMask))
+				{
+					dynamic otherBullet = other.GetComponent<Bullet>();
+					otherBullet?.TakeDamage(m_Damage);
+					OnDoDamage();
+				}
+				else if (Compare(other.layer, playerMask))
+				{
+					PlayerController otherPlayer = other.GetComponent<PlayerController>();
+					otherPlayer?.TakeDamage(m_Damage);
+					OnDoDamage();
+				}
+			}
+		}
+		#endregion
 
 		#region Unity Events
 		private void Awake()
@@ -97,7 +157,7 @@ namespace Game
 		}
 		private void Start()
 		{
-			OnBirth?.Invoke();
+			OnBirth?.Invoke(this);
 		}
 		private void Update()
 		{
@@ -105,7 +165,7 @@ namespace Game
 		private void OnDestroy()
 		{
 			StopCoroutine(Travel());
-			// OnDeath?.Invoke();
+			OnDeath?.Invoke(this);
 		}
 		#endregion
 
