@@ -161,6 +161,10 @@ namespace Game
 		}
 		private void Update()
 		{
+			if (GameManager.Instance.m_IsGameOver)
+			{
+				Destroy(gameObject);
+			}
 		}
 		private void OnDestroy()
 		{
