@@ -72,7 +72,7 @@ namespace Game
 				}
 				s.transform.position = transform.position;
 				s.transform.rotation = Quaternion.identity;
-				s.transform.parent = transform;
+				// s.transform.parent = transform;
 				Quaternion rotation = fn(i, transform);
 
 				Vector3 p0 = s.GetControlPoint(0);
