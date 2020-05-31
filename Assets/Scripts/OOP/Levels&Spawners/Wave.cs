@@ -7,7 +7,7 @@ using UnityEngine;
 public class Wave : MonoBehaviour
 {
     public Enemy EnemyToSpawn;
-    public float TimeBeforeWave = 2;
+    public float TimeBeforeWave = 2f;
     public int AmountToSpawn = 5;
     public float TimeBetweenEachEnemy = 1;
     public BezierSpline Spline;

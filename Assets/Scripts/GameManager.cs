@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public List<LevelManager> levels;
     public Canvas canvas;
     public Text EndGameText;
+    LevelManager currentLevel;
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && canvas.enabled)
@@ -25,8 +26,8 @@ public class GameManager : MonoBehaviour
             return;
         if(level <= levels.Count && level > 0)
         {
-            LevelManager lm = Instantiate(levels[level - 1]) as LevelManager;
-            lm.SetGameManager(this);
+            currentLevel = Instantiate(levels[level - 1]) as LevelManager;
+            currentLevel.SetGameManager(this);
             canvas.enabled = false;
         }
     }
@@ -36,7 +37,10 @@ public class GameManager : MonoBehaviour
         if (won)
             EndGameText.text = "Victoire !";
         else
+        {
+            Destroy(currentLevel.gameObject);
             EndGameText.text = "Défaite...";
+        }
         canvas.enabled = true;
     }
 }
