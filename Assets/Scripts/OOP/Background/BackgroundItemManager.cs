@@ -1,7 +1,4 @@
-﻿
-using UnityEditor.UIElements;
-using UnityEngine;
-using UnityEngine.UIElements;
+﻿using UnityEngine;
 
 public class BackgroundItemManager : MonoBehaviour
 {
