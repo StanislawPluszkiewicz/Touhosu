@@ -34,9 +34,9 @@ public class GameManager : MonoBehaviour
     public void GameOver(bool won)
     {
         if (won)
-            EndGameText.text = "Tu as gagné !";
+            EndGameText.text = "Victoire !";
         else
-            EndGameText.text = "Perdu...";
+            EndGameText.text = "Défaite...";
         canvas.enabled = true;
     }
 }
