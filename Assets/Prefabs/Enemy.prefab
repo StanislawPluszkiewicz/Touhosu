@@ -229,8 +229,8 @@ MonoBehaviour:
   m_Velocity: {x: 0, y: 0, z: 0}
   m_BirthTime: 0
   m_MovementMotor: {fileID: 1002620699799885543}
-  m_TimeFactor: 0.1
-  m_Amplitude: 0.5
+  m_TimeFactor: 0.2
+  m_Amplitude: 0.15
 --- !u!1 &8224277658725675260
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,10 +285,13 @@ MonoBehaviour:
     SerializationNodes: []
   points:
   - {x: 0, y: 0, z: 0}
-  - {x: 2, y: -10, z: 0}
-  - {x: 5, y: -20, z: 0}
-  - {x: 20, y: -25, z: 0}
-  modes: 0000000000000000
+  - {x: 5, y: -10, z: 0}
+  - {x: 1.7720952, y: -20, z: 0}
+  - {x: 20, y: -20, z: 0}
+  - {x: 34.40091, y: -20, z: 0}
+  - {x: 50.1298, y: -20, z: 0}
+  - {x: 53.302937, y: -20, z: 0}
+  modes: 000000000000000000000000
   loop: 0
 --- !u!1 &9205340845716102322
 GameObject:
