@@ -21,6 +21,11 @@ namespace Game
 				HP = DefaultHP;
 			}
 		}
+		protected override void Awake()
+		{
+			isSubjectToBoundaries = true;
+		}
+
 
 		protected override Vector3 GetMoveInput(float timeSinceBirth)
 		{
