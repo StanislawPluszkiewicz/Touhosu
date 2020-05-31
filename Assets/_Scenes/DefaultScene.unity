@@ -200,6 +200,7 @@ MonoBehaviour:
   levels:
   - {fileID: 133914656617870594, guid: 81bebb0bd5ca69140934b026f0281618, type: 3}
   - {fileID: 1940702820698301136, guid: 328c1a737ca2d994f95ff0a83d180a6f, type: 3}
+  - {fileID: 273335496130057194, guid: 6a705f3b76814634d9acf2d4a999a2ba, type: 3}
   canvas: {fileID: 1644280358}
   EndGameText: {fileID: 454645427}
 --- !u!4 &76267455
@@ -2349,7 +2350,7 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 2
+            m_IntArgument: 3
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
