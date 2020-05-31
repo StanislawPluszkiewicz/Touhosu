@@ -22,6 +22,9 @@ namespace Game
 		public Vector3 Velocity { get => m_Velocity; }
 		public float AngularSpeed { get => m_AngularSpeed; }
 
+		protected float DefaultHP = 20f;
+		protected float HP = 20f;
+
 
 		[Title("Shoot")]
 		protected bool m_DoShoot;
@@ -49,9 +52,10 @@ namespace Game
 		}
 
 		#region Collisions
-		public void TakeDamage(float dmg)
+		public virtual void TakeDamage(float dmg)
 		{
-			Debug.Log("Ship taking damage");
+			Debug.Log("Ship taking damage", this);
+			//ne doit pas passer par la
 		}
 		protected virtual LayerMask GetProjectileLayerMask()
 		{

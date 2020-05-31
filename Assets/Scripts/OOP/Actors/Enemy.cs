@@ -43,5 +43,13 @@ namespace Game
 			Gizmos.color = Color.magenta;
 			Gizmos.DrawLine(transform.position, transform.position + m_Velocity);
 		}
+
+		public override void TakeDamage(float dmg)
+		{
+			HP -= dmg;
+			if (HP <= 0)
+				Destroy();
+
+		}
 	}
 }

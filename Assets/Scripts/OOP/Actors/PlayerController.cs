@@ -11,6 +11,16 @@ namespace Game
 		[SerializeField] protected float m_Speed;
 		[Title("Movement Restriction")]
 		[SerializeField] private bool m_ShowBoundaryGizmo;
+		[SerializeField] GameManager gm;
+		public override void TakeDamage(float dmg)
+		{
+			HP -= dmg;
+			if(HP < 0)
+			{
+				gm.GameOver(false);
+				HP = DefaultHP;
+			}
+		}
 
 		protected override Vector3 GetMoveInput(float timeSinceBirth)
 		{
