@@ -2,7 +2,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Entities;
 using UnityEditor;
 using UnityEngine;
 
@@ -63,15 +62,7 @@ namespace Game
 			int n = (int)m_Directions / 2;
 			for (int i = -n; i <= n; ++i)
 			{
-				BezierSpline s = UnityEditor.PrefabUtility.InstantiatePrefab(OnePrefabToRuleThemAll) as BezierSpline; // allows in instantiate in edit mode
-				if (EditorApplication.isPlaying)
-				{
-					Debug.Log("Editor");
-				}
-				if (Application.isPlaying)
-				{
-					Debug.Log("Application");
-				}
+				BezierSpline s = Instantiate(OnePrefabToRuleThemAll) as BezierSpline; // allows in instantiate in edit mode
 				s.transform.position = transform.position;
 				s.transform.rotation = Quaternion.identity;
 				// s.transform.parent = transform;
