@@ -3225,6 +3225,7 @@ MonoBehaviour:
   m_BirthTime: 0
   m_Speed: 50
   m_ShowBoundaryGizmo: 1
+  gm: {fileID: 76267454}
 --- !u!54 &1685942677
 Rigidbody:
   m_ObjectHideFlags: 0
