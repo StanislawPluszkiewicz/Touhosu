@@ -6,9 +6,6 @@ public class GameManager : MonoBehaviour
 {
     public List<LevelManager> levels;
     public Canvas canvas;
-
-
-
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && canvas.enabled)
@@ -22,9 +19,12 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(int level)
     {
+        if (levels.Count == 0)
+            return;
         if(level <= levels.Count && level > 0)
         {
-            Instantiate(levels[level - 1]);
+            LevelManager lm = Instantiate(levels[level - 1]) as LevelManager;
+            lm.SetGameManager(this);
             canvas.enabled = false;
         }
     }
