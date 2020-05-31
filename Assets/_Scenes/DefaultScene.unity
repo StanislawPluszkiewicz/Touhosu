@@ -2362,7 +2362,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_Height: 5
+  m_Height: 15
   m_AngularSpeed: 30
   m_TranslateSpeed: 0
   m_Velocity: {x: 0, y: 0, z: 0}
