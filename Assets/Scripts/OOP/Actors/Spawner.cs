@@ -18,5 +18,6 @@ namespace Game
 			e.transform.parent = transform;
 			e.transform.position = transform.position;
 		}
+		
 	}
 }
