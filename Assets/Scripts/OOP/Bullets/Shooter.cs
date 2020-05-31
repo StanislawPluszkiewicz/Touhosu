@@ -117,7 +117,6 @@ namespace Game
 			{
 				foreach (var s in m_Splines)
 				{
-
 					dynamic bullet = m_Prefab.Instantiate(transform.position, transform);
 
 					if (bullet is HomingBullet)

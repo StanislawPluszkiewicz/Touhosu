@@ -115,7 +115,7 @@ namespace Game
 				if (Compare(other.layer, enemyMask))
 				{
 					Enemy actor = other.GetComponentInParent<Enemy>();
-					actor?.TakeDamage(m_Damage);
+					actor.TakeDamage(m_Damage);
 					OnDoDamage();
 				}
 				if (Compare(other.layer, enemyBulletMask))
@@ -130,7 +130,7 @@ namespace Game
 				if (Compare(other.layer, playerMask))
 				{
 					PlayerController otherPlayer = other.GetComponentInParent<PlayerController>();
-					otherPlayer?.TakeDamage(m_Damage);
+					otherPlayer.TakeDamage(m_Damage);
 					OnDoDamage();
 				}
 				if (Compare(other.layer, playerBulletMask))
