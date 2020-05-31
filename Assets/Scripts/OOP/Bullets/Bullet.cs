@@ -54,7 +54,7 @@ namespace Game
 			while (this != null)
 			{
 				float t = Time.time - birthTime;
-				transform.position += m_Motor.GetFinalVelocity(t);
+				transform.position += GetVelocity(t);
 				_rb.angularVelocity = m_ShootDirection;
 				yield return null;
 			}

@@ -14,9 +14,10 @@ namespace Game
 		[SerializeField] protected float m_Height;
 
 		[SerializeField] protected float m_AngularSpeed;
-		protected Vector3 m_Velocity;
+		[SerializeField] protected float m_TranslateSpeed;
+		[SerializeField, ReadOnly] protected Vector3 m_Velocity;
 
-		protected float m_TimeSinceBirth = 0.0f;
+		[SerializeField, ReadOnly] protected float m_BirthTime = 0.0f;
 
 		public Vector3 Velocity { get => m_Velocity; }
 		public float AngularSpeed { get => m_AngularSpeed; }
@@ -46,6 +47,7 @@ namespace Game
 		#region UnityEvents
 		protected virtual void Awake()
 		{
+			m_BirthTime = Time.time;
 			_transform = transform;
 			_rb = GetComponent<Rigidbody>();
 		}
@@ -68,26 +70,41 @@ namespace Game
 		protected virtual void Update()
 		{
 			Shoot();
-			m_TimeSinceBirth += Time.deltaTime;
+			if (SlowDownTime())
+			{
+				Time.timeScale = 0.5f;
+			}
+			else
+			{
+				Time.timeScale = 1.0f;
+			}
 		}
 		#endregion
+
+		protected virtual bool SlowDownTime()
+		{
+			Debug.LogError("GetMoveInput", this);
+			return false;
+		}
+
 		#region Movement
-		protected virtual Vector3 GetMoveInput()
+		protected virtual Vector3 GetMoveInput(float timeSinceBirth)
 		{
 			Debug.LogError("GetMoveInput", this);
 			return Vector3.zero;
 		}
 		public IEnumerator Move()
 		{
-			float startTime = Time.time;
+			m_BirthTime = Time.time;
 
-			while (this)
+			while (this != null)
 			{
-				m_Velocity = GetMoveInput();
+				m_Velocity = GetMoveInput(Time.time - m_BirthTime);
 
-				transform.position += m_Velocity;
-				transform.position = Boundary.ClampPosition(transform.position, m_Height);
-				startTime += Time.deltaTime;
+				Vector3 newPosition = transform.position + m_Velocity;
+				newPosition = Boundary.ClampPosition(newPosition, m_Height);
+
+				transform.position = newPosition;
 				yield return null;
 			}
 		}

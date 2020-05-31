@@ -311,8 +311,12 @@ MonoBehaviour:
     SerializationNodes: []
   m_Height: 5
   m_AngularSpeed: 15
+  m_TranslateSpeed: 0
+  m_Velocity: {x: 0, y: 0, z: 0}
+  m_BirthTime: 0
   m_MovementMotor: {fileID: 0}
-  m_TimeForBezier: 1
+  m_TimeFactor: 0
+  m_Amplitude: 1
 --- !u!54 &121378840
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -918,8 +922,12 @@ MonoBehaviour:
     SerializationNodes: []
   m_Height: 5
   m_AngularSpeed: 15
+  m_TranslateSpeed: 0.1
+  m_Velocity: {x: 0, y: 0, z: 0}
+  m_BirthTime: 0
   m_MovementMotor: {fileID: 1012419572}
-  m_TimeForBezier: 10
+  m_TimeFactor: 0.5
+  m_Amplitude: 1
 --- !u!54 &592060838
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -936,6 +944,68 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &612151223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 612151225}
+  - component: {fileID: 612151224}
+  m_Layer: 0
+  m_Name: bezier (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &612151224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612151223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db382f6ea6ecd6a419027220b0e9c27a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  points:
+  - {x: 0, y: 0, z: 0}
+  - {x: 42.56859, y: -10.980194, z: 0}
+  - {x: 30.471489, y: -47.688602, z: 0}
+  - {x: 46.54705, y: -50.22547, z: 0}
+  - {x: 62.622612, y: -52.76234, z: 0}
+  - {x: 95.74016, y: -46.507217, z: 0}
+  - {x: 81.075264, y: -19.97834, z: 0}
+  modes: 0200000002000000000000000200000002000000
+  loop: 0
+--- !u!4 &612151225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612151223}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -2, y: 40.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &617830017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1565,10 +1635,13 @@ MonoBehaviour:
     SerializationNodes: []
   points:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: -100, z: 0}
-  - {x: 50, y: -150, z: 0}
-  - {x: 150, y: -150, z: 0}
-  modes: 0000000000000000
+  - {x: 42.56859, y: -10.980194, z: 0}
+  - {x: 30.471489, y: -47.688602, z: 0}
+  - {x: 46.54705, y: -50.22547, z: 0}
+  - {x: 62.622612, y: -52.76234, z: 0}
+  - {x: 95.74016, y: -46.507217, z: 0}
+  - {x: 81.075264, y: -19.97834, z: 0}
+  modes: 0200000002000000000000000200000002000000
   loop: 0
 --- !u!1 &1090371108
 GameObject:
@@ -2569,6 +2642,9 @@ MonoBehaviour:
     SerializationNodes: []
   m_Height: 5
   m_AngularSpeed: 30
+  m_TranslateSpeed: 0
+  m_Velocity: {x: 0, y: 0, z: 0}
+  m_BirthTime: 0
   m_Speed: 50
   m_ShowBoundaryGizmo: 1
 --- !u!54 &1685942677

@@ -169,7 +169,7 @@ public class BezierSpline : SerializedMonoBehaviour {
 
 	public float GetDecimalTime(float t)
 	{
-		return t - (float)Math.Truncate(t);
+		return t % ((points.Length - 1) / 3);
 	}
 	public Vector3 GetFinalVelocity(float t)
 	{
