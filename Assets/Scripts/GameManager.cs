@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Game;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour
     public Canvas canvas;
     public Text EndGameText;
     LevelManager currentLevel;
+    public PlayerController player;
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && canvas.enabled)
@@ -39,6 +42,7 @@ public class GameManager : MonoBehaviour
             return;
         if(level <= levels.Count && level > 0)
         {
+            player.Reset();
 			m_IsGameOver = false;
 			currentLevel = Instantiate(levels[level - 1]) as LevelManager;
             currentLevel.SetGameManager(this);

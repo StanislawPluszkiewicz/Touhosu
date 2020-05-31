@@ -18,7 +18,7 @@ namespace Game
 			if(HP < 0)
 			{
 				gm.GameOver(false);
-				HP = DefaultHP;
+				Reset();
 			}
 		}
 
@@ -44,6 +44,11 @@ namespace Game
 		{
 			if (m_ShowBoundaryGizmo)
 				Boundary.ShowGizmos(Color.yellow);
+		}
+
+		public void Reset()
+		{
+			HP = DefaultHP;
 		}
 	}
 
