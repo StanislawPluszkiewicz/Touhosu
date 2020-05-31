@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,14 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         if (transform.childCount == 0)
+        {
+            gm.GameOver(true);
             Destroy(gameObject);
+        }
+    }
+
+    public void SetGameManager(GameManager manager)
+    {
+        gm = manager;
     }
 }
