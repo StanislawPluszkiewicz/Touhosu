@@ -91,11 +91,11 @@ namespace Game
 		#region OnCollision
 		protected virtual void TakeDamage(float dmg)
 		{
-			Debug.Log("On taking damage");
+			// Debug.Log("On taking damage");
 		}
 		protected virtual void OnDoDamage()
 		{
-			Debug.Log("On doing damage");
+			// Debug.Log("On doing damage");
 		}
 		bool Compare(LayerMask first, LayerMask second)
 		{
@@ -112,31 +112,31 @@ namespace Game
 
 			if (Compare(gameObject.layer, playerBulletMask))
 			{
+				if (Compare(other.layer, enemyMask))
+				{
+					Enemy actor = other.GetComponentInParent<Enemy>();
+					actor?.TakeDamage(m_Damage);
+					OnDoDamage();
+				}
 				if (Compare(other.layer, enemyBulletMask))
 				{
 					dynamic otherBullet = other.GetComponent<Bullet>();
 					otherBullet?.TakeDamage(m_Damage);
 					OnDoDamage();
 				}
-				else if (Compare(other.layer, enemyMask))
-				{
-					Enemy otherEnemy = other.GetComponent<Enemy>();
-					otherEnemy?.TakeDamage(m_Damage);
-					OnDoDamage();
-				}
 			}
 			else if (Compare(gameObject.layer, enemyBulletMask))
 			{
+				if (Compare(other.layer, playerMask))
+				{
+					PlayerController otherPlayer = other.GetComponentInParent<PlayerController>();
+					otherPlayer?.TakeDamage(m_Damage);
+					OnDoDamage();
+				}
 				if (Compare(other.layer, playerBulletMask))
 				{
 					dynamic otherBullet = other.GetComponent<Bullet>();
 					otherBullet?.TakeDamage(m_Damage);
-					OnDoDamage();
-				}
-				else if (Compare(other.layer, playerMask))
-				{
-					PlayerController otherPlayer = other.GetComponent<PlayerController>();
-					otherPlayer?.TakeDamage(m_Damage);
 					OnDoDamage();
 				}
 			}

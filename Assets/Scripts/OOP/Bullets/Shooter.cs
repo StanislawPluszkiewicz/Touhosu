@@ -130,7 +130,7 @@ namespace Game
 					(bullet as Bullet).OnDeath += (Bullet instance) =>
 					{
 						m_Bullets.Remove(instance);
-						if (m_Bullets.Count == 0 && (m_Destroying || destroyAfterShootOneSalve))
+						if (this != null && m_Bullets.Count == 0 && (m_Destroying || destroyAfterShootOneSalve))
 						{
 							Helper.Destroy(gameObject);
 						}
