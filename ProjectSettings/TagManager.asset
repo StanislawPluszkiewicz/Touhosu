@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Planeta
   layers:
   - Default
   - TransparentFX
@@ -14,11 +15,11 @@ TagManager:
   - 
   - 
   - Player
-  - Player lasers
+  - Player bullet
   - 
   - 
-  - Foe
-  - Foe lasers
+  - Enemy
+  - Enemy bullet
   - 
   - 
   - 
