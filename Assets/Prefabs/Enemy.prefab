@@ -224,7 +224,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   m_Height: 5
-  m_AngularSpeed: 1
+  m_AngularSpeed: 10
   m_TranslateSpeed: 0
   m_Velocity: {x: 0, y: 0, z: 0}
   m_BirthTime: 0
