@@ -16,6 +16,7 @@ namespace Game
 		[ReadOnly] public BezierSpline OnePrefabToRuleThemAll;
 		[SerializeField] UInt32 m_Directions; //  number of directions in which we shoot
 		[SerializeField] [Range(0, 360)] float m_AngleSpread;
+		[SerializeField] [Range(0, 360)] float m_AngleOffset;
 		[SerializeField] Bullet m_Prefab;
 		[SerializeField] float m_FireRate;
 		[SerializeField] float m_SplineLength;
@@ -51,7 +52,7 @@ namespace Game
 		delegate Quaternion RotationMethod(int i, Transform t);
 		Quaternion Rotation1(int i, Transform t)
 		{
-			return Quaternion.AngleAxis(i * m_AngleSpread, t.forward);
+			return Quaternion.AngleAxis(m_AngleOffset + i * m_AngleSpread, t.forward);
 		}
 
 		private void CreationMethod(RotationMethod fn)
