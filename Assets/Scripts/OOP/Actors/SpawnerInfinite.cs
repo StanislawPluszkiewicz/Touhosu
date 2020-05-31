@@ -27,7 +27,6 @@ namespace Game
 			}
 		}
 
-		[Button]
 		public void Spawn()
 		{
 			int i = Helper.RandomBetween(0, prefabs.Count);

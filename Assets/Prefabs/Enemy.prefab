@@ -143,6 +143,7 @@ MonoBehaviour:
     type: 3}
   m_Directions: 0
   m_AngleSpread: 78
+  m_AngleOffset: 0
   m_Prefab: {fileID: 6649412250726842785, guid: 3ee6b6da0fd11b4488803a76c89536e4,
     type: 3}
   m_FireRate: 1
@@ -175,7 +176,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7089559499968711859}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -184,7 +185,7 @@ Transform:
   - {fileID: 3088417259583508119}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2146551152762406904
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -222,10 +223,14 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  m_Height: 5
-  m_AngularSpeed: 15
+  m_Height: 0
+  m_AngularSpeed: 0
+  m_TranslateSpeed: 0
+  m_Velocity: {x: 0, y: 0, z: 0}
+  m_BirthTime: 0
   m_MovementMotor: {fileID: 1002620699799885543}
-  m_TimeForBezier: 2
+  m_TimeFactor: 0
+  m_Amplitude: 1
 --- !u!1 &8224277658725675260
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,9 +285,9 @@ MonoBehaviour:
     SerializationNodes: []
   points:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 2, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 6, z: 0}
+  - {x: 3, y: 0, z: 0}
+  - {x: 6, y: 0, z: 0}
+  - {x: 9, y: 0, z: 0}
   modes: 0000000000000000
   loop: 0
 --- !u!1 &9205340845716102322
@@ -308,14 +313,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9205340845716102322}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8405655495361816886}
   m_Father: {fileID: 6414524881525033385}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!1001 &4236921509547700652
 PrefabInstance:
   m_ObjectHideFlags: 0
