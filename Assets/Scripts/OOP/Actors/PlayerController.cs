@@ -18,7 +18,7 @@ namespace Game
 			if(HP < 0)
 			{
 				gm.GameOver(false);
-				HP = DefaultHP;
+				Reset();
 			}
 		}
 		protected override void Awake()
@@ -49,6 +49,11 @@ namespace Game
 		{
 			if (m_ShowBoundaryGizmo)
 				Boundary.ShowGizmos(Color.yellow);
+		}
+
+		public void Reset()
+		{
+			HP = DefaultHP;
 		}
 	}
 
