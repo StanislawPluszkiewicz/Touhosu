@@ -157,6 +157,7 @@ MonoBehaviour:
   - {fileID: 273335496130057194, guid: 6a705f3b76814634d9acf2d4a999a2ba, type: 3}
   canvas: {fileID: 1644280358}
   EndGameText: {fileID: 454645427}
+  player: {fileID: 1685942676}
 --- !u!4 &76267455
 Transform:
   m_ObjectHideFlags: 0
