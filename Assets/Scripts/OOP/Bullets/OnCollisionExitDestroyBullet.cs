@@ -24,9 +24,16 @@ namespace Game
 
 		private void DESTROYTHEMALL(GameObject go)
 		{
-			//Bullet b = go.GetComponent<Bullet>() as Bullet;
-			//if (b) Helper.Destroy(b.gameObject);
-			Helper.Destroy(go);
+			Bullet b = go.GetComponentInParent<Bullet>() as Bullet;
+			if (b)
+			{
+				Helper.Destroy(b.gameObject);
+			}
+			Actor a = go.GetComponentInParent<Actor>() as Actor;
+			if (a)
+			{
+				Helper.Destroy(a.gameObject);
+			}
 		}
 	}
 }

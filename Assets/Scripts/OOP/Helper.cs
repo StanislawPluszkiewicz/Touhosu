@@ -26,7 +26,7 @@ namespace Game
 				UnityEngine.Object.Destroy(go);
 			else if (UnityEngine.Application.isEditor)
 			{
-				UnityEngine.Object.Destroy(go);
+				// UnityEngine.Object.Destroy(go);
 				try
 				{
 					UnityEngine.Object.DestroyImmediate(go);
