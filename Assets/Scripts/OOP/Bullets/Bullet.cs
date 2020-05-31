@@ -99,7 +99,7 @@ namespace Game
 		}
 		bool Compare(LayerMask first, LayerMask second)
 		{
-			return (first == second);
+			return (first & 1 << second) == 1 << second;
 		}
 		private void OnCollisionEnter(Collision collision)
 		{
