@@ -21,7 +21,7 @@ namespace Game
 		}
 		protected override LayerMask GetProjectileLayerMask()
 		{
-			return LayerMask.NameToLayer("Enemy Bullet");
+			return LayerMask.NameToLayer("Enemy bullet");
 		}
 		
 		private void OnDrawGizmosSelected()

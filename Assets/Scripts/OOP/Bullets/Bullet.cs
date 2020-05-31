@@ -37,7 +37,7 @@ namespace Game
 		}
 		public void Init(LayerMask layer, Vector3 shootDirection, BezierSpline pattern = null)
 		{
-			gameObject.layer = layer;
+			gameObject.layer = layer.value;
 			m_Motor = pattern;
 			m_ShootDirection = shootDirection;
 		}
