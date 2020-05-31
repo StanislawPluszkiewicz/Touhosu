@@ -27,14 +27,14 @@ namespace Game
 			else if (UnityEngine.Application.isEditor)
 			{
 				UnityEngine.Object.Destroy(go);
-				// try
-				// {
-				// 	UnityEngine.Object.DestroyImmediate(go);
-				// }
-				// catch(System.Exception)
-				// {
-				// 	UnityEngine.Object.Destroy(go);
-				// }
+				try
+				{
+					UnityEngine.Object.DestroyImmediate(go);
+				}
+				catch (System.Exception)
+				{
+					UnityEngine.Object.Destroy(go);
+				}
 			}
 				
 		}

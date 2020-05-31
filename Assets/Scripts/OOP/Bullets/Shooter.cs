@@ -22,7 +22,7 @@ namespace Game
 		[SerializeField] float m_SplineLength;
 		float m_NextFireTime;
 
-		[SerializeField, ReadOnly] public List<BezierSpline> m_Splines;
+		[SerializeField] public List<BezierSpline> m_Splines;
 		[SerializeField, ReadOnly] private List<Bullet> m_Bullets;
 
 		public void Awake()

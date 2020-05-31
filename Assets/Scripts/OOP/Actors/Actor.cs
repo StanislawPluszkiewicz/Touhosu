@@ -32,6 +32,8 @@ namespace Game
 		protected Rigidbody _rb;
 		protected Camera _cam;
 
+		protected bool isSubjectToBoundaries = false;
+
 		#region Collisions
 		public void TakeDamage(float dmg)
 		{
@@ -102,7 +104,9 @@ namespace Game
 				m_Velocity = GetMoveInput(Time.time - m_BirthTime);
 
 				Vector3 newPosition = transform.position + m_Velocity;
-				newPosition = Boundary.ClampPosition(newPosition, m_Height);
+
+				if(isSubjectToBoundaries)
+					newPosition = Boundary.ClampPosition(newPosition, m_Height);
 
 				transform.position = newPosition;
 				yield return null;

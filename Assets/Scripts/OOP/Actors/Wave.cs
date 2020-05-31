@@ -7,16 +7,33 @@ using UnityEngine;
 public class Wave : MonoBehaviour
 {
     public Enemy EnemyToSpawn;
-    public float TimeBeforeWave;
-    public int EnemyAmount;
-    public float TimeBetweenEachEnemy;
+    public float TimeBeforeWave = 2;
+    public int AmountToSpawn = 5;
+    public float TimeBetweenEachEnemy = 1;
 
-    public int enemySpawned = 0;
+    int enemySpawned = 0;
+    float timeForSpawn = Time.time;
+    bool allEnemiesInvoked = false;
 
+    private void Start()
+    {
+        timeForSpawn += TimeBeforeWave;
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        if(Time.time >= timeForSpawn && !allEnemiesInvoked)
+        {
+            Spawn();
+            enemySpawned++;
+            if (enemySpawned < AmountToSpawn)
+                timeForSpawn += TimeBetweenEachEnemy;
+            else
+                allEnemiesInvoked = true;
+        }
+
+        if (allEnemiesInvoked && transform.childCount == 0)
+            Destroy(gameObject);
     }
 
     public void Spawn()
