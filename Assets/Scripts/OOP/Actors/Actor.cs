@@ -34,6 +34,20 @@ namespace Game
 
 		protected bool isSubjectToBoundaries = false;
 
+		private bool m_Destroying = false;
+
+		public IEnumerator Destroy()
+		{
+			StopAllCoroutines();
+			m_Destroying = true;
+			foreach (Weapon w in m_Weapons)
+			{
+				StartCoroutine(w.Destroy());
+			}
+			GameObject.Destroy(gameObject);
+			yield return null;
+		}
+
 		#region Collisions
 		public void TakeDamage(float dmg)
 		{
@@ -52,6 +66,7 @@ namespace Game
 			m_BirthTime = Time.time;
 			_transform = transform;
 			_rb = GetComponent<Rigidbody>();
+			_rb.freezeRotation = true;
 		}
 		protected virtual void Start()
 		{
@@ -66,15 +81,16 @@ namespace Game
 				w.ProjectileLayer = GetProjectileLayerMask();
 			}
 
-
 			StartCoroutine(Move());
 		}
 		protected virtual void Update()
 		{
+			if (m_Destroying) return;
 			Shoot();
-			if (SlowDownTime())
+			if (GetSlowDownTimeInput())
 			{
-				Time.timeScale = 0.5f;
+
+				Time.timeScale = 0.1f;
 			}
 			else
 			{
@@ -83,7 +99,7 @@ namespace Game
 		}
 		#endregion
 
-		protected virtual bool SlowDownTime()
+		protected virtual bool GetSlowDownTimeInput()
 		{
 			Debug.LogError("GetMoveInput", this);
 			return false;

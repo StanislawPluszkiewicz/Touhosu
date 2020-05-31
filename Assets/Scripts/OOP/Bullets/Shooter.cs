@@ -22,6 +22,8 @@ namespace Game
 		[SerializeField] float m_SplineLength;
 		float m_NextFireTime;
 
+		private bool m_Destroying = false;
+
 		[SerializeField] public List<BezierSpline> m_Splines;
 		[SerializeField, ReadOnly] private List<Bullet> m_Bullets;
 
@@ -92,7 +94,19 @@ namespace Game
 			}
 		}
 
+		public IEnumerator Destroy()
+		{
+			m_Destroying = true;
+			GameObject allMightParent = GameObject.Find("AllMightParent");
+			if (allMightParent == null) allMightParent = new GameObject("AllMightParent");
+			allMightParent.AddComponent<DestroyWhenNoChilds>();
+			foreach (BezierSpline spline in m_Splines)
+			{
+				spline.transform.parent = allMightParent.transform;
 
+			}
+			yield return null;
+		}
 
 
 		public void Shoot(LayerMask ProjectileLayer, bool destroyAfterShootOneSalve = false, Transform m_Target = null)
@@ -109,18 +123,16 @@ namespace Game
 					else if (bullet is Bullet)
 						(bullet as Bullet).Init(ProjectileLayer, transform.up, s);
 					bullet.StartCoroutine(bullet.Travel());
-					if (destroyAfterShootOneSalve)
+
+					m_Bullets.Add(bullet);
+					(bullet as Bullet).OnDeath += (Bullet instance) =>
 					{
-						m_Bullets.Add(bullet);
-						(bullet as Bullet).OnDeath += (Bullet instance) => 
+						m_Bullets.Remove(instance);
+						if (m_Bullets.Count == 0 && (m_Destroying || destroyAfterShootOneSalve))
 						{
-							m_Bullets.Remove(instance);
-							if (m_Bullets.Count == 0)
-							{
-								Helper.Destroy(gameObject);
-							}
-						};
-					}
+							Helper.Destroy(gameObject);
+						}
+					};
 				}
 				m_NextFireTime = Time.time + m_FireRate;
 			}

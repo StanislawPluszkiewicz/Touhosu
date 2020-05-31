@@ -15,11 +15,7 @@ namespace Game
 
 		float m_PatternProgress = 0;
 
-		protected override bool SlowDownTime()
-		{
-			// Debug.LogError("Ennemy cannot do it", this);
-			return false;
-		}
+		protected override bool GetSlowDownTimeInput() => false;
 
 		protected override Vector3 GetMoveInput(float timeSinceBirth)
 		{

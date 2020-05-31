@@ -28,5 +28,14 @@ namespace Game
 				instance.Shoot(ProjectileLayer, m_Target);
 			}
 		}
+
+		public IEnumerator Destroy()
+		{
+			foreach (Shooter instance in m_Shooters)
+			{
+				StartCoroutine(instance.Destroy());
+			}
+			yield return null;
+		}
 	}
 }

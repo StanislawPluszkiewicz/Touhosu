@@ -32,7 +32,7 @@ namespace Game
 			Actor a = go.GetComponentInParent<Actor>() as Actor;
 			if (a)
 			{
-				Helper.Destroy(a.gameObject);
+				StartCoroutine(a.Destroy());
 			}
 		}
 	}

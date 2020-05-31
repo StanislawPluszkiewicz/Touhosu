@@ -18,9 +18,9 @@ namespace Game
 			float moveVertical = Input.GetAxisRaw("Vertical");
 			return new Vector3(moveHorizontal, moveVertical, 0) * m_Speed * Time.deltaTime;
 		}
-		protected override bool SlowDownTime()
+		protected override bool GetSlowDownTimeInput()
 		{
-			return Input.GetKeyDown(KeyCode.LeftShift);
+			return Input.GetKey(KeyCode.LeftShift);
 		}
 		protected override bool GetShootInput()
 		{
