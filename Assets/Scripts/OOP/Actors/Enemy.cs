@@ -30,7 +30,7 @@ namespace Game
 			// Debug.Log("timeSinceBirth(" + timeSinceBirth + ") :" + m_MovementMotor.GetVelocity(timeSinceBirth));
 			// float factor = m_TranslateSpeed * Time.deltaTime / m_TimeForBezier;
 			// Debug.Log("t   :" + timeSinceBirth);
-			Debug.Log("t :" + m_MovementMotor.GetDecimalTime(timeSinceBirth) + " # " + m_MovementMotor.GetFinalVelocity(timeSinceBirth * m_TimeFactor).normalized * m_Amplitude);
+			// Debug.Log("t :" + m_MovementMotor.GetDecimalTime(timeSinceBirth) + " # " + m_MovementMotor.GetFinalVelocity(timeSinceBirth * m_TimeFactor).normalized * m_Amplitude);
 
 			return m_MovementMotor.GetFinalVelocity(timeSinceBirth * m_TimeFactor).normalized * m_Amplitude;
 		}
