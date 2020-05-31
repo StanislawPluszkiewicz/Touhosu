@@ -12,12 +12,12 @@ public class Wave : MonoBehaviour
     public float TimeBetweenEachEnemy = 1;
 
     int enemySpawned = 0;
-    float timeForSpawn = Time.time;
+    float timeForSpawn;
     bool allEnemiesInvoked = false;
 
     private void Start()
     {
-        timeForSpawn += TimeBeforeWave;
+        timeForSpawn = Time.time + TimeBeforeWave;
     }
     // Update is called once per frame
     void Update()
