@@ -11,7 +11,7 @@ namespace Game
 	public class Actor : SerializedMonoBehaviour
 	{
 		[Title("Movement")]
-		[ReadOnly] public float m_Height = Helper.ShipHeights;
+		[SerializeField] protected float m_Height;
 
 		[SerializeField] protected float m_AngularSpeed;
 		protected Vector3 m_Velocity;
@@ -46,7 +46,7 @@ namespace Game
 			m_Weapons = GetComponentsInChildren<Weapon>();
 			if (m_Weapons.Length == 0) Debug.LogError("Actor has no weapons!", this);
 
-			CoroutineManager.Instance.StartCoroutine(Move());
+			StartCoroutine(Move());
 		}
 		protected virtual void Update()
 		{
@@ -83,24 +83,16 @@ namespace Game
 		}
 		public void Shoot()
 		{
-			Transform target = FindTarget();
 			m_DoShoot = GetShootInput();
 			if (m_DoShoot)
 			{
 				foreach (Weapon w in m_Weapons)
 				{
-					w.SetTarget(target);
 					w.Shoot();
 				}
 			}
 		}
-		protected virtual Transform FindTarget()
-		{
-			Debug.LogError("Make sure to override FindTarget when inheriting from Actor!");
-			return null;
-		}
 		#endregion
-
 	}
 
 }

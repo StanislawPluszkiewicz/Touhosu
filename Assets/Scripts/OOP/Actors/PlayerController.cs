@@ -12,18 +12,6 @@ namespace Game
 		[Title("Movement Restriction")]
 		[SerializeField] private bool m_ShowBoundaryGizmo;
 
-
-		protected override Transform FindTarget()
-		{
-			Vector3 mousePos = Input.mousePosition;
-			mousePos.z = Helper.ShipHeights;
-			Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
-			// Debug.Log(worldPosition);
-
-			// set closest enemy to worldpos
-			return null;
-		}
-
 		protected override Vector3 GetMoveInput()
 		{
 			float moveHorizontal = Input.GetAxisRaw("Horizontal");
