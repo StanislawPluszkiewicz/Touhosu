@@ -101,9 +101,9 @@ namespace Game
 		{
 			return (first & 1 << second) == 1 << second;
 		}
-		private void OnCollisionEnter(Collision collision)
+		private void OnTriggerEnter(Collider collider)
 		{
-			GameObject other = collision.collider.gameObject;
+			GameObject other = collider.gameObject;
 
 			LayerMask	playerMask			= LayerMask.NameToLayer("Player"),
 						playerBulletMask	= LayerMask.NameToLayer("Player bullet"),
