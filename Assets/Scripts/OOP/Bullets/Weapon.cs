@@ -11,6 +11,10 @@ namespace Game
 		[SerializeField] Shooter[] m_Shooters;
 		public Transform m_Target;
 
+		private LayerMask m_ProjectileLayer;
+
+		public LayerMask ProjectileLayer { get => m_ProjectileLayer; set => m_ProjectileLayer = value; }
+
 		public void Awake()
 		{
 			m_Shooters = GetComponentsInChildren<Shooter>();
@@ -21,7 +25,7 @@ namespace Game
 		{
 			foreach (Shooter instance in m_Shooters)
 			{
-				instance.Shoot(m_Target);
+				instance.Shoot(ProjectileLayer, m_Target);
 			}
 		}
 	}

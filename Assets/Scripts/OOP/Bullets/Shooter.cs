@@ -80,9 +80,8 @@ namespace Game
 
 
 
-		public void Shoot(Transform m_Target = null)
+		public void Shoot(LayerMask ProjectileLayer, Transform m_Target = null)
 		{
-			Debug.Log(CanShoot());
 			if (CanShoot())
 			{
 				foreach (var s in m_Splines)
@@ -90,9 +89,9 @@ namespace Game
 					dynamic bullet = m_Prefab.Instantiate(transform.position, transform);
 
 					if (bullet is HomingBullet)
-						(bullet as HomingBullet).Init(transform.up, m_Target, s);
+						(bullet as HomingBullet).Init(ProjectileLayer, transform.up, m_Target, s);
 					else if (bullet is Bullet)
-						(bullet as Bullet).Init(transform.up, s);
+						(bullet as Bullet).Init(ProjectileLayer, transform.up, s);
 					bullet.StartCoroutine(bullet.Travel());
 				}
 				m_NextFireTime = Time.time + m_FireRate;

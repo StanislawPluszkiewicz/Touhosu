@@ -31,6 +31,11 @@ namespace Game
 		protected Rigidbody _rb;
 		protected Camera _cam;
 
+		protected virtual LayerMask GetProjectileLayerMask()
+		{
+			Debug.LogError("GetLayerMask", this);
+			return LayerMask.NameToLayer("None");
+		}
 
 		#region UnityEvents
 		protected virtual void Awake()
@@ -45,6 +50,12 @@ namespace Game
 
 			m_Weapons = GetComponentsInChildren<Weapon>();
 			if (m_Weapons.Length == 0) Debug.LogError("Actor has no weapons!", this);
+
+			foreach (Weapon w in m_Weapons)
+			{
+				w.ProjectileLayer = GetProjectileLayerMask();
+			}
+
 
 			StartCoroutine(Move());
 		}

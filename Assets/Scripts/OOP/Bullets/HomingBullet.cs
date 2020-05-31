@@ -14,9 +14,9 @@ namespace Game
 		[MinValue(0.1)] public float m_Homingness;
 
 
-		public void Init(Vector3 shootDirection, Transform target, BezierSpline pattern = null)
+		public void Init(LayerMask layer, Vector3 shootDirection, Transform target, BezierSpline pattern = null)
 		{
-			Init(shootDirection, pattern);
+			Init(layer, shootDirection, pattern);
 			m_Target = target;
 		}
 		public override Vector3 GetVelocity(float t)

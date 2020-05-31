@@ -22,7 +22,10 @@ namespace Game
 		{
 			return (Input.GetKey(Game.KeyBindings.Shoot));
 		}
-
+		protected override LayerMask GetProjectileLayerMask()
+		{
+			return LayerMask.NameToLayer("Player bullet");
+		}
 		private void OnDrawGizmos()
 		{
 			if (m_ShowBoundaryGizmo)

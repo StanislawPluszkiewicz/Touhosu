@@ -35,8 +35,9 @@ namespace Game
 		{
 			return Instantiate(this, position, Quaternion.identity);
 		}
-		public void Init(Vector3 shootDirection, BezierSpline pattern = null)
+		public void Init(LayerMask layer, Vector3 shootDirection, BezierSpline pattern = null)
 		{
+			gameObject.layer = layer;
 			m_Motor = pattern;
 			m_ShootDirection = shootDirection;
 		}
@@ -77,7 +78,7 @@ namespace Game
 			foreach (Shooter s in m_Shooters)
 			{
 				Shooter instance = Instantiate(s, transform.position, Quaternion.identity, null) as Shooter;
-				instance.Shoot();
+				instance.Shoot(gameObject.layer);
 				Helper.Destroy(instance.gameObject);
 			}
 		}
