@@ -10,6 +10,7 @@ public class Wave : MonoBehaviour
     public float TimeBeforeWave = 2;
     public int AmountToSpawn = 5;
     public float TimeBetweenEachEnemy = 1;
+    public BezierSpline Spline;
 
     int enemySpawned = 0;
     float timeForSpawn;
@@ -39,6 +40,7 @@ public class Wave : MonoBehaviour
     public void Spawn()
     {
         Enemy e = Instantiate(EnemyToSpawn) as Enemy;
+        e.m_MovementMotor = Spline;
         e.transform.parent = transform;
         e.transform.position = transform.position;
     }
