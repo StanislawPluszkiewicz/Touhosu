@@ -95,12 +95,14 @@ namespace Game
 			if (GetSlowDownTimeInput())
 			{
 
-				Time.timeScale = 0.1f;
+				Time.timeScale = 0.5f;
 			}
 			else
 			{
 				Time.timeScale = 1.0f;
 			}
+
+			Time.fixedDeltaTime = Time.fixedDeltaTime * Time.timeScale;
 		}
 		#endregion
 

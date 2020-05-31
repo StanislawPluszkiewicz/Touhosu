@@ -92,10 +92,12 @@ namespace Game
 		protected virtual void TakeDamage(float dmg)
 		{
 			// Debug.Log("On taking damage");
+			Destroy(gameObject);
 		}
 		protected virtual void OnDoDamage()
 		{
 			// Debug.Log("On doing damage");
+			Destroy(gameObject);
 		}
 		bool Compare(LayerMask first, LayerMask second)
 		{

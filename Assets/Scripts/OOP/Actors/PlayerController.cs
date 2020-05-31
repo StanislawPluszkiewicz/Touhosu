@@ -30,7 +30,7 @@ namespace Game
 		}
 		protected override bool GetSlowDownTimeInput()
 		{
-			return Input.GetKey(KeyCode.LeftShift);
+			return Input.GetKeyDown(KeyCode.LeftShift);
 		}
 		protected override bool GetShootInput()
 		{
