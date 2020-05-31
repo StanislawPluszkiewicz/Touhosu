@@ -98,12 +98,14 @@ namespace Game
 		{
 			m_Destroying = true;
 			GameObject allMightParent = GameObject.Find("AllMightParent");
-			if (allMightParent == null) allMightParent = new GameObject("AllMightParent");
-			allMightParent.AddComponent<DestroyWhenNoChilds>();
+			if (allMightParent == null)
+			{
+				allMightParent = new GameObject("AllMightParent");
+				allMightParent.AddComponent<DestroyWhenNoChilds>();
+			}
 			foreach (BezierSpline spline in m_Splines)
 			{
 				spline.transform.parent = allMightParent.transform;
-
 			}
 			yield return null;
 		}
