@@ -99,11 +99,11 @@ namespace Game
 		}
 		bool Compare(LayerMask first, LayerMask second)
 		{
-			return (first & 1 << second) == 1 << second;
+			return LayerMask.LayerToName(first) == LayerMask.LayerToName(second);
 		}
-		private void OnCollisionEnter(Collision collision)
+		private void OnTriggerEnter(Collider collider)
 		{
-			GameObject other = collision.collider.gameObject;
+			GameObject other = collider.gameObject;
 
 			LayerMask	playerMask			= LayerMask.NameToLayer("Player"),
 						playerBulletMask	= LayerMask.NameToLayer("Player bullet"),
