@@ -51,7 +51,7 @@ namespace Game
 		{
 			float birthTime = Time.time;
 
-			while (this != null)
+			while (this != null && m_Motor != null)
 			{
 				float t = Time.time - birthTime;
 				transform.position += GetVelocity(t);
