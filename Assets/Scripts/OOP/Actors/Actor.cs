@@ -92,17 +92,17 @@ namespace Game
 		{
 			if (m_Destroying) return;
 			Shoot();
-			if (GetSlowDownTimeInput())
-			{
-
-				Time.timeScale = 0.5f;
-			}
-			else
-			{
-				Time.timeScale = 1.0f;
-			}
-
-			Time.fixedDeltaTime = Time.fixedDeltaTime * Time.timeScale;
+			// if (GetSlowDownTimeInput())
+			// {
+			// 
+			// 	Time.timeScale = 0.5f;
+			// }
+			// else
+			// {
+			// 	Time.timeScale = 1.0f;
+			// }
+			// 
+			// Time.fixedDeltaTime = Time.fixedDeltaTime * Time.timeScale;
 		}
 		#endregion
 
